@@ -46,6 +46,11 @@ void Gamma::RegisterFilterControlEventHandler(
 	}
 }
 
+string Gamma::GetName() const
+{
+    return "Gamma";
+}
+
 void Gamma::SetGamma(
 	const float gamma)
 {

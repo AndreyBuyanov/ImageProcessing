@@ -47,6 +47,11 @@ void Median3::RegisterFilterControlEventHandler(
 	}
 }
 
+string Median3::GetName() const
+{
+    return "Median 3";
+}
+
 void Median3::Run()
 {
 	if (m_FilterControlEventHandler) {
@@ -67,37 +72,14 @@ void Median3::Run()
 
 		src = m_Bitmap->Data();
 		uint32_t srcOffset = w * 4;
-		//dst = tempBitmap->Data();
 		dst = tempBitmap->Data() + tempBitmap->Width() * 4;
-		//LeftUp
-		//*(reinterpret_cast<uint32_t*>(src)) = *(reinterpret_cast<uint32_t*>(dst));
-		//Up
-		//dst += 4;
-		//memcpy(dst, src, srcOffset);
-		//RightUp
-		//dst += srcOffset;
-		//*(reinterpret_cast<uint32_t*>(src + srcOffset - 4)) = *(reinterpret_cast<uint32_t*>(dst));
-		//dst += 4;
-		//Copy
 		for (uint32_t i = 0; i < h; i++) {
-			//*(reinterpret_cast<uint32_t*>(src)) = *(reinterpret_cast<uint32_t*>(dst));
 			dst += 4;
 			memcpy(dst, src, srcOffset);
 			src += srcOffset;
 			dst += srcOffset;
-			//*(reinterpret_cast<uint32_t*>(src - 4)) = *(reinterpret_cast<uint32_t*>(dst));
 			dst += 4;
 		}
-		//LeftDown
-		//src -= srcOffset;
-		//*(reinterpret_cast<uint32_t*>(src)) = *(reinterpret_cast<uint32_t*>(dst));
-		//Down
-		//dst += 4;
-		//memcpy(dst, src, srcOffset);
-		//RightDown
-		//src += srcOffset;
-		//dst += srcOffset;
-		//*(reinterpret_cast<uint32_t*>(src - 4)) = *(reinterpret_cast<uint32_t*>(dst));
 
 		dst = m_Bitmap->Data();
 		uint8_t *src1 = tempBitmap->Data();
@@ -106,7 +88,7 @@ void Median3::Run()
 
 		uint8_t bubble[9] = { 0 };
 
-		int x = 0, y = 0, i = 0;
+		uint32_t x = 0, y = 0, i = 0;
 		for (y = 0; y < h; y++) {
 			if (m_Thread->IsStopped()) {
 				break;

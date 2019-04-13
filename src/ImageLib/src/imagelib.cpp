@@ -7,8 +7,6 @@
 #include "ImageLib/Filters/Gamma.hpp"
 #include "ImageLib/Filters/Median3.hpp"
 
-#include "FreeImage.h"
-
 namespace ImageLib
 {
 

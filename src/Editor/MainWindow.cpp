@@ -2,31 +2,39 @@
 #include "ui_MainWindow.h"
 
 #include <QFileDialog>
+#include <QVariant>
 
 #include "ImageLib/IBitmap.hpp"
-#include "ImageLib/Filters/IInvert.hpp"
-#include "ImageLib/Filters/IGrayscale.hpp"
-#include "ImageLib/Filters/IConvultion.hpp"
-#include "ImageLib/Filters/IGamma.hpp"
-#include "ImageLib/Filters/IMedian.hpp"
+
+#include "Filters/filterConvultion.hpp"
+#include "Filters/filterGamma.hpp"
+#include "Filters/filterGrayscale.hpp"
+#include "Filters/filterInvert.hpp"
+#include "Filters/filterMedian.hpp"
 
 using ImageLib::CreateBitmap;
 using ImageLib::BitmapInfo;
 using ImageLib::BitmapFormat;
 
-using ImageLib::Filters::CreateInvertFilter;
-using ImageLib::Filters::CreateGrayscaleFilter;
-using ImageLib::Filters::CreateConvultion3x3Filter;
-using ImageLib::Filters::CreateGammaFilter;
-using ImageLib::Filters::CreateMedian3Filter;
+Q_DECLARE_METATYPE(IFilterUI*)
 
-using ImageLib::Filters::Kernel3x3;
+void MainWindow::AddFilter(IFilterUI* f)
+{
+    f->GetUI()->setVisible(false);
+    ui->frFilter->layout()->addWidget(f->GetUI());
+    f->GetFilter()->RegisterFilterControlEventHandler(this);
+    f->GetFilter()->RegisterProgressEventHandler(this);
+    QVariant v;
+    v.setValue(f);
+    ui->cbFilters->addItem(QString(f->GetFilter()->GetName().c_str()), v);
+}
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
 	m_FilterProgress(new QProgressBar(this)),
-	m_FilterTimeLabel(new QLabel(this))
+	m_FilterTimeLabel(new QLabel(this)),
+    m_CurrentFilter(nullptr)
 {
     ui->setupUi(this);
 	m_FilterProgress->setRange(0, 100);
@@ -34,30 +42,26 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->statusBar->addWidget(m_FilterProgress);
 	ui->statusBar->addWidget(m_FilterTimeLabel);
 
-    m_Invert.reset(CreateInvertFilter());
+    connect(ui->cbFilters, SIGNAL(currentIndexChanged(int)), this, SLOT(selectFilter(int)));
 
-    m_Invert->RegisterFilterControlEventHandler(this);
-	m_Invert->RegisterProgressEventHandler(this);
+    IFilterUI* f = nullptr;
 
-    m_Grayscale.reset(CreateGrayscaleFilter());
+    f = new filterConvultion(ui->frFilter);
+    AddFilter(f);
 
-    m_Grayscale->RegisterFilterControlEventHandler(this);
-    m_Grayscale->RegisterProgressEventHandler(this);
+    f = new filterGamma(ui->frFilter);
+    AddFilter(f);
 
-    m_Convultion3x3.reset(CreateConvultion3x3Filter());
+    f = new filterGrayscale(ui->frFilter);
+    AddFilter(f);
 
-    m_Convultion3x3->RegisterFilterControlEventHandler(this);
-    m_Convultion3x3->RegisterProgressEventHandler(this);
+    f = new filterInvert(ui->frFilter);
+    AddFilter(f);
 
-    m_Gamma.reset(CreateGammaFilter());
+    f = new filterMedian(ui->frFilter);
+    AddFilter(f);
 
-    m_Gamma->RegisterFilterControlEventHandler(this);
-    m_Gamma->RegisterProgressEventHandler(this);
-
-    m_Median3.reset(CreateMedian3Filter());
-
-    m_Median3->RegisterFilterControlEventHandler(this);
-    m_Median3->RegisterProgressEventHandler(this);
+    
 }
 
 MainWindow::~MainWindow()
@@ -101,44 +105,36 @@ void MainWindow::on_actionOpen_triggered()
             m_Image.bits(),
             static_cast<uint32_t>(m_Image.width()),
             static_cast<uint32_t>(m_Image.height()),
-            BitmapFormat::RGBA};
+            BitmapFormat::RGBA };
 		m_Bitmap.reset(CreateBitmap(info));
         ui->canvas->repaint();
     }
 }
 
-void MainWindow::on_actionInvert_triggered()
+void MainWindow::on_actionSave_As_triggered()
 {
-    m_Invert->SetBitmap(m_Bitmap.get());
-	m_Invert->ProcessBitmap();
+
 }
 
-void MainWindow::on_actionGrayscale_triggered()
+void MainWindow::on_actionExit_triggered()
 {
-    m_Grayscale->SetBitmap(m_Bitmap.get());
-    m_Grayscale->ProcessBitmap();
+
 }
 
-void MainWindow::on_actionConvultion_triggered()
+void MainWindow::selectFilter(int index)
 {
-    m_Convultion3x3->SetBitmap(m_Bitmap.get());
-    Kernel3x3 kernel = {
-         0.0f, -1.0f,  0.0f,
-        -1.0f,  4.0f, -1.0f,
-         0.0f, -1.0f,  0.0f};
-    m_Convultion3x3->SetKernel(kernel);
-    m_Convultion3x3->ProcessBitmap();
+    if (m_CurrentFilter) {
+        m_CurrentFilter->GetUI()->setVisible(false);
+    }
+    m_CurrentFilter = (ui->cbFilters->currentData()).value<IFilterUI*>();
+    if (m_CurrentFilter) {
+        m_CurrentFilter->GetUI()->setVisible(true);
+    }
 }
 
-void MainWindow::on_actionGamma_correction_triggered()
+void MainWindow::on_pbApplyFilter_clicked()
 {
-    m_Gamma->SetBitmap(m_Bitmap.get());
-    m_Gamma->SetGamma(2.5f);
-    m_Gamma->ProcessBitmap();
-}
-
-void MainWindow::on_actionMedian_3_triggered()
-{
-    m_Median3->SetBitmap(m_Bitmap.get());
-    m_Median3->ProcessBitmap();
+    m_CurrentFilter->ApplyParams();
+    m_CurrentFilter->GetFilter()->SetBitmap(m_Bitmap.get());
+    m_CurrentFilter->GetFilter()->ProcessBitmap();
 }

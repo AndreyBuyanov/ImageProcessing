@@ -43,6 +43,11 @@ void Grayscale::RegisterFilterControlEventHandler(
 	}
 }
 
+string Grayscale::GetName() const
+{
+    return "Grayscale";
+}
+
 void Grayscale::Run()
 {
 	if (m_FilterControlEventHandler) {

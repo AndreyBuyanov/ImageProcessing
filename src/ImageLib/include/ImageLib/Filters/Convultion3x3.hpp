@@ -30,6 +30,8 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
+    string GetName() const override;
+
 	void SetKernel(
 		const Kernel3x3 &kernel) override;
 

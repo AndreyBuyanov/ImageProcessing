@@ -43,6 +43,11 @@ void Invert::RegisterFilterControlEventHandler(
 	}
 }
 
+string Invert::GetName() const
+{
+    return "Invert";
+}
+
 void Invert::Run()
 {
 	if (m_FilterControlEventHandler) {

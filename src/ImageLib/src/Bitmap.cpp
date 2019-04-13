@@ -3,45 +3,6 @@
 namespace ImageLib
 {
 
-/*static bool SaveBitmap(
-	FIBITMAP* bmp,
-	const ImageFormat format,
-	const string &fileName)
-{
-	bool bResult = false;
-	if (bmp) {
-		switch (format)
-		{
-		case ImageFormat::BMP:
-			bResult = FreeImage_Save(FIF_BMP, bmp, fileName.c_str());
-			break;
-		case ImageFormat::JPEG:
-		{
-			if (FreeImage_GetBPP(bmp) == 32) {
-				FIBITMAP *tmpBmp = FreeImage_ConvertTo24Bits(bmp);
-				if (tmpBmp) {
-					bResult = FreeImage_Save(FIF_JPEG, tmpBmp, fileName.c_str());
-				}
-				if (bResult) {
-					FreeImage_Unload(tmpBmp);
-				}
-			}
-			else {
-				bResult = FreeImage_Save(FIF_JPEG, bmp, fileName.c_str());
-			}
-		}
-		break;
-		case ImageFormat::PNG:
-			bResult = FreeImage_Save(FIF_PNG, bmp, fileName.c_str());
-			break;
-		case ImageFormat::GIF:
-			bResult = FreeImage_Save(FIF_GIF, bmp, fileName.c_str());
-			break;
-		}
-	}
-	return bResult;
-}*/
-	
 Bitmap::Bitmap():
 	m_BitmapInfo(BitmapInfo()),
 	m_Ownership(false) {}

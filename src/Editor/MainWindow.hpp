@@ -8,18 +8,16 @@
 #include <QLabel>
 
 #include <memory>
+#include <vector>
 
-#include "ImageLib/ImageLib.hpp"
 #include "ImageLib/Events.hpp"
 
+#include "IFilterUI.hpp"
+
 using std::unique_ptr;
+using std::vector;
 
 using ImageLib::IBitmap;
-using ImageLib::Filters::IInvert;
-using ImageLib::Filters::IGrayscale;
-using ImageLib::Filters::IConvultion3x3;
-using ImageLib::Filters::IGamma;
-using ImageLib::Filters::IMedian3;
 using ImageLib::IFilterControlEventHandler;
 using ImageLib::IProgressEventHandler;
 
@@ -49,15 +47,13 @@ public:
 private slots:
     void on_actionOpen_triggered();
 
-    void on_actionInvert_triggered();
+    void on_actionSave_As_triggered();
 
-    void on_actionGrayscale_triggered();
+    void on_actionExit_triggered();
 
-    void on_actionConvultion_triggered();
+    void selectFilter(int index);
 
-    void on_actionGamma_correction_triggered();
-
-    void on_actionMedian_3_triggered();
+    void on_pbApplyFilter_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -67,11 +63,9 @@ private:
 
     QImage m_Image;
     unique_ptr<IBitmap> m_Bitmap;
-    unique_ptr<IInvert> m_Invert;
-    unique_ptr<IGrayscale> m_Grayscale;
-    unique_ptr<IConvultion3x3> m_Convultion3x3;
-    unique_ptr<IGamma> m_Gamma;
-    unique_ptr<IMedian3> m_Median3;
+    IFilterUI* m_CurrentFilter;
+
+    void AddFilter(IFilterUI* f);
 };
 
 #endif // MAINWINDOW_HPP

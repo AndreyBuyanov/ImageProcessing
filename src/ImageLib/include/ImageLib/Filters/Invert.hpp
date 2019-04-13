@@ -30,6 +30,8 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
+    string GetName() const override;
+
 	// IRunnable
 	void Run() override;
 

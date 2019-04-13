@@ -51,6 +51,11 @@ void Convultion3x3::RegisterFilterControlEventHandler(
 	}
 }
 
+string Convultion3x3::GetName() const
+{
+    return "Convultion 3x3";
+}
+
 void Convultion3x3::SetKernel(
 	const Kernel3x3 &kernel)
 {
@@ -79,37 +84,14 @@ void Convultion3x3::Run()
 
 		src = m_Bitmap->Data();
 		uint32_t srcOffset = w * 4;
-		//dst = tempBitmap->Data();
 		dst = tempBitmap->Data() + tempBitmap->Width() * 4;
-		//LeftUp
-		//*(reinterpret_cast<uint32_t*>(src)) = *(reinterpret_cast<uint32_t*>(dst));
-		//Up
-		//dst += 4;
-		//memcpy(dst, src, srcOffset);
-		//RightUp
-		//dst += srcOffset;
-		//*(reinterpret_cast<uint32_t*>(src + srcOffset - 4)) = *(reinterpret_cast<uint32_t*>(dst));
-		//dst += 4;
-		//Copy
 		for (uint32_t i = 0; i < h; i++) {
-			//*(reinterpret_cast<uint32_t*>(src)) = *(reinterpret_cast<uint32_t*>(dst));
 			dst += 4;
 			memcpy(dst, src, srcOffset);
 			src += srcOffset;
 			dst += srcOffset;
-			//*(reinterpret_cast<uint32_t*>(src - 4)) = *(reinterpret_cast<uint32_t*>(dst));
 			dst += 4;
 		}
-		//LeftDown
-		//src -= srcOffset;
-		//*(reinterpret_cast<uint32_t*>(src)) = *(reinterpret_cast<uint32_t*>(dst));
-		//Down
-		//dst += 4;
-		//memcpy(dst, src, srcOffset);
-		//RightDown
-		//src += srcOffset;
-		//dst += srcOffset;
-		//*(reinterpret_cast<uint32_t*>(src - 4)) = *(reinterpret_cast<uint32_t*>(dst));
 
 		float fsum = m_Kernel.Summ();
 		if (fsum == 0)

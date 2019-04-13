@@ -2,8 +2,6 @@
 
 #include "ImageLib/ImageLib.hpp"
 
-using std::string;
-
 namespace ImageLib
 {
 

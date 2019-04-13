@@ -5,10 +5,4 @@
 namespace ImageLib
 {
 
-/*class IBitmap;
-
-IBitmap* ExpandBitmap(
-	IBitmap* src, 
-	const uint32_t kernelSize);*/
-
 }

@@ -26,6 +26,8 @@ public:
 		IProgressEventHandler* handler) = 0;
 	virtual void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler* handler) = 0;
+
+    virtual string GetName() const = 0;
 };
 
 }

@@ -8,14 +8,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         MainWindow.cpp \
-        QCanvas.cpp
+        QCanvas.cpp \
+    Filters/filterConvultion.cpp \
+    Filters/filterGamma.cpp \
+    Filters/filterGrayscale.cpp \
+    Filters/filterInvert.cpp \
+    Filters/filterMedian.cpp
 
 HEADERS += \
         MainWindow.hpp \
-        QCanvas.hpp
+        QCanvas.hpp \
+    Filters/filterConvultion.hpp \
+    Filters/filterGamma.hpp \
+    Filters/filterGrayscale.hpp \
+    Filters/filterInvert.hpp \
+    Filters/filterMedian.hpp
 
 FORMS += \
-        MainWindow.ui
+        MainWindow.ui \
+    Filters/filterConvultion.ui \
+    Filters/filterGamma.ui \
+    Filters/filterGrayscale.ui \
+    Filters/filterInvert.ui \
+    Filters/filterMedian.ui
 
 INCLUDEPATH += \
 	../include
