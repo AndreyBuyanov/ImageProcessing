@@ -30,6 +30,9 @@ public:
 	QWidget* GetUI() { return this; }
 	IFilter* GetFilter() { return m_Convultion3x3.get(); }
 	void ApplyParams();
+
+private slots:
+    void loadPreset(int index);
 private:
     Ui::filterConvultion *ui;
 	unique_ptr<IConvultion3x3> m_Convultion3x3;
