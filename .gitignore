@@ -1,4 +1,8 @@
-﻿/.vs
+﻿/.idea
+/.vs
+/.vscode
 /bin
 /lib
 /src/Editor/Editor.pro.user
+/build
+/cmake-build-*
