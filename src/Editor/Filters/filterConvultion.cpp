@@ -21,10 +21,10 @@ const vector<pair<QString, Kernel3x3>> presets =
          0.0f, -1.0f,  0.0f,
         -1.0f,  4.0f, -1.0f,
          0.0f, -1.0f,  0.0f)),
-    make_pair("Sobel", Kernel3x3(
-        -1.0f,  0.0f,  1.0f,
-        -2.0f,  0.0f,  2.0f,
-        -1.0f,  0.0f,  1.0f)),
+    make_pair("Laplasian (diagonals)", Kernel3x3(
+        -1.0f, -1.0f, -1.0f,
+        -1.0f,  8.0f, -1.0f,
+        -1.0f, -1.0f, -1.0f)),
     make_pair("Embross", Kernel3x3(
         -2.0f, -1.0f,  0.0f,
         -1.0f,  1.0f,  1.0f,
