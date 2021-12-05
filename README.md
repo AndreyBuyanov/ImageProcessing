@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/797ed6eb331d4dcba05b28adabcb1ac2)](https://app.codacy.com/gh/AndreyBuyanov/ImageProcessing?utm_source=github.com&utm_medium=referral&utm_content=AndreyBuyanov/ImageProcessing&utm_campaign=Badge_Grade_Settings)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 [![Build Linux](https://github.com/AndreyBuyanov/ImageProcessing/actions/workflows/build-linux.yml/badge.svg)](https://github.com/AndreyBuyanov/ImageProcessing/actions/workflows/build-linux.yml)
