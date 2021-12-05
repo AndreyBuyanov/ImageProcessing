@@ -71,7 +71,7 @@ std::size_t BitmapHelper::GetPixelPosition(
     if (BitmapFormat::RGBA == bitmap->Format()) {
         pixelSize = 4;
     }
-    return (bitmap->Width() * y + bitmap->Height() * x) * pixelSize + channel;
+    return (bitmap->Width() * y + x) * pixelSize + channel;
 }
 
 }
