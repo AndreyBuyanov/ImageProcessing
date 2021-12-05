@@ -14,7 +14,8 @@ SOURCES += \
     Filters/filterGrayscale.cpp \
     Filters/filterInvert.cpp \
     Filters/filterMedian.cpp \
-    Filters/filterSobel.cpp
+    Filters/filterSobel.cpp \
+    Filters/filterRoberts.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -24,7 +25,8 @@ HEADERS += \
     Filters/filterGrayscale.hpp \
     Filters/filterInvert.hpp \
     Filters/filterMedian.hpp \
-    Filters/filterSobel.hpp
+    Filters/filterSobel.hpp \
+    Filters/filterRoberts.hpp
 
 FORMS += \
         MainWindow.ui \
@@ -33,7 +35,8 @@ FORMS += \
     Filters/filterGrayscale.ui \
     Filters/filterInvert.ui \
     Filters/filterMedian.ui \
-    Filters/filterSobel.ui
+    Filters/filterSobel.ui \
+    Filters/filterRoberts.ui
 
 INCLUDEPATH += \
 	../include
