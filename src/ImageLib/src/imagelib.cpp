@@ -7,6 +7,7 @@
 #include "ImageLib/Filters/Gamma.hpp"
 #include "ImageLib/Filters/Median3.hpp"
 #include "ImageLib/Filters/Sobel.hpp"
+#include "ImageLib/Filters/Roberts.hpp"
 
 namespace ImageLib
 {
@@ -74,6 +75,11 @@ IMedian3* CreateMedian3Filter()
 ISobel* CreateSobelFilter()
 {
 	return new Sobel();
+}
+
+IRoberts* CreateRobertsFilter()
+{
+	return new Roberts();
 }
 
 }

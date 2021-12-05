@@ -18,6 +18,11 @@ public:
         IBitmap* source,
         const kernel_t& kernel,
         IProgressEventHandler* handler);
+    
+    static void Convolution(
+        IBitmap* source,
+        const kernel2_t& kernel,
+        IProgressEventHandler* handler);
 
     static std::unique_ptr<IBitmap> Grayscale(
         IBitmap* source,

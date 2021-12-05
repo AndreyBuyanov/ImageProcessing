@@ -58,6 +58,7 @@ class IGrayscale;
 class IGamma;
 class IMedian3;
 class ISobel;
+class IRoberts;
 
 ImageLib_API IInvert* CreateInvertFilter();
 
@@ -70,6 +71,8 @@ ImageLib_API IGamma* CreateGammaFilter();
 ImageLib_API IMedian3* CreateMedian3Filter();
 
 ImageLib_API ISobel* CreateSobelFilter();
+
+ImageLib_API IRoberts* CreateRobertsFilter();
 
 }
 

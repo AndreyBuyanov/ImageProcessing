@@ -12,6 +12,7 @@
 #include "Filters/filterInvert.hpp"
 #include "Filters/filterMedian.hpp"
 #include "Filters/filterSobel.hpp"
+#include "Filters/filterRoberts.hpp"
 
 using ImageLib::CreateBitmap;
 using ImageLib::BitmapInfo;
@@ -63,6 +64,9 @@ MainWindow::MainWindow(QWidget *parent) :
     AddFilter(f);
 
     f = new filterSobel(ui->frFilter);
+    AddFilter(f);
+
+    f = new filterRoberts(ui->frFilter);
     AddFilter(f);
 }
 

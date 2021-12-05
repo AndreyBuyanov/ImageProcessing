@@ -1,6 +1,7 @@
 #include "ImageLib/Filters/FilterHelper.hpp"
 
 #include "ImageLib/BitmapHelper.hpp"
+#include "ImageLib/BitmapView.hpp"
 
 #include <numeric>
 #include <algorithm>
@@ -58,6 +59,44 @@ void FilterHelper::Convolution(
         src1 += 2 * pixelSize;
         src2 += 2 * pixelSize;
         src3 += 2 * pixelSize;
+    }
+}
+
+void FilterHelper::Convolution(
+    IBitmap* source,
+    const kernel2_t& kernel,
+    IProgressEventHandler* handler)
+{
+    std::unique_ptr<IBitmap> tempBitmap(
+        BitmapHelper::CreateEdgeHandledBitmap(source));
+    float k = 0.0f;
+    for (const auto& row: kernel) {
+        k += std::accumulate(row.begin(), row.end(), 0.0f);
+    }
+    k = (k == 0.0f) ? 1.0f : (1.0f / k);
+    std::uint32_t pixelSize = 1;
+    if (BitmapFormat::RGBA == source->Format()) {
+        pixelSize = 4;
+    }
+
+    BitmapView dstView { source };
+    BitmapView srcView { tempBitmap.get() };
+
+    for (std::uint32_t y = 0; y < source->Height(); y++) {
+        for (std::uint32_t x = 0; x < source->Width(); x++) {
+            for (std::uint32_t channel = 0; channel < pixelSize; channel++) {
+                float c = srcView.GetPixel(x + 1, y + 1, channel) * kernel[0][0]
+                    + srcView.GetPixel(x + 2, y + 1, channel) * kernel[0][1]
+                    + srcView.GetPixel(x + 1, y + 2, channel) * kernel[1][0]
+                    + srcView.GetPixel(x + 2, y + 2, channel) * kernel[1][1];
+                c *= k;
+                dstView.SetPixel(x, y, channel,
+                    static_cast<std::uint8_t>(clamp(c, F_MIN, F_MAX)));
+            }
+        }
+        if (handler) {
+            handler->UpdateProgress(static_cast<std::int32_t>(static_cast<float>(y) / source->Height() * 100));
+        }
     }
 }
 
