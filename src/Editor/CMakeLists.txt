@@ -1,3 +1,5 @@
+cmake_minimum_required (VERSION 3.16)
+
 project ("Editor")
 
 set(CMAKE_INCLUDE_CURRENTUI_DIR ON)

@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.16)
 
 project("ImageLib")
 
@@ -27,6 +27,14 @@ add_library(${PROJECT_NAME}
 	SHARED 
 	${SRCS}
 	${HDRS}
+)
+
+set(IMAGELIB_LIBRARIES
+	opencv::opencv_imgproc
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+	${IMAGELIB_LIBRARIES}
 )
 
 set_target_properties(${PROJECT_NAME}
