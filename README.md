@@ -3,4 +3,4 @@
 [![Build Linux](https://github.com/AndreyBuyanov/ImageProcessing/actions/workflows/build-linux.yml/badge.svg)](https://github.com/AndreyBuyanov/ImageProcessing/actions/workflows/build-linux.yml)
 [![Build Windows](https://github.com/AndreyBuyanov/ImageProcessing/actions/workflows/build-windows.yml/badge.svg)](https://github.com/AndreyBuyanov/ImageProcessing/actions/workflows/build-windows.yml)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5efa44a9ee80454ca39f429a496ce0a7)](https://www.codacy.com/gh/AndreyBuyanov/ImageProcessing/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AndreyBuyanov/ImageProcessing&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/58268c7f0629441bafd489bbca0a2d30)](https://www.codacy.com/gh/AndreyBuyanov/ImageProcessing/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AndreyBuyanov/ImageProcessing&amp;utm_campaign=Badge_Grade)
