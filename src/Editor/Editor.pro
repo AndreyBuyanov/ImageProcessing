@@ -9,7 +9,7 @@ SOURCES += \
         main.cpp \
         MainWindow.cpp \
         QCanvas.cpp \
-    Filters/filterConvultion.cpp \
+    Filters/filterConvolution.cpp \
     Filters/filterGamma.cpp \
     Filters/filterGrayscale.cpp \
     Filters/filterInvert.cpp \
@@ -19,7 +19,7 @@ SOURCES += \
 HEADERS += \
         MainWindow.hpp \
         QCanvas.hpp \
-    Filters/filterConvultion.hpp \
+    Filters/filterConvolution.hpp \
     Filters/filterGamma.hpp \
     Filters/filterGrayscale.hpp \
     Filters/filterInvert.hpp \
@@ -28,7 +28,7 @@ HEADERS += \
 
 FORMS += \
         MainWindow.ui \
-    Filters/filterConvultion.ui \
+    Filters/filterConvolution.ui \
     Filters/filterGamma.ui \
     Filters/filterGrayscale.ui \
     Filters/filterInvert.ui \
