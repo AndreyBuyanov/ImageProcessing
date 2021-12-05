@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <array>
 
 namespace ImageLib
 {
@@ -10,5 +11,7 @@ typedef double Real;
 #else
 typedef float Real;
 #endif
+
+using kernel_t = std::array<std::array<Real, 3>, 3>;
 
 }

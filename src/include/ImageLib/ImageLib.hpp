@@ -57,6 +57,7 @@ class IConvultion3x3;
 class IGrayscale;
 class IGamma;
 class IMedian3;
+class ISobel;
 
 ImageLib_API IInvert* CreateInvertFilter();
 
@@ -67,6 +68,8 @@ ImageLib_API IGrayscale* CreateGrayscaleFilter();
 ImageLib_API IGamma* CreateGammaFilter();
 
 ImageLib_API IMedian3* CreateMedian3Filter();
+
+ImageLib_API ISobel* CreateSobelFilter();
 
 }
 

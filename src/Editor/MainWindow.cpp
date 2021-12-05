@@ -11,6 +11,7 @@
 #include "Filters/filterGrayscale.hpp"
 #include "Filters/filterInvert.hpp"
 #include "Filters/filterMedian.hpp"
+#include "Filters/filterSobel.hpp"
 
 using ImageLib::CreateBitmap;
 using ImageLib::BitmapInfo;
@@ -61,7 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
     f = new filterMedian(ui->frFilter);
     AddFilter(f);
 
-    
+    f = new filterSobel(ui->frFilter);
+    AddFilter(f);
 }
 
 MainWindow::~MainWindow()

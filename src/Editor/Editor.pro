@@ -13,7 +13,8 @@ SOURCES += \
     Filters/filterGamma.cpp \
     Filters/filterGrayscale.cpp \
     Filters/filterInvert.cpp \
-    Filters/filterMedian.cpp
+    Filters/filterMedian.cpp \
+    Filters/filterSobel.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -22,7 +23,8 @@ HEADERS += \
     Filters/filterGamma.hpp \
     Filters/filterGrayscale.hpp \
     Filters/filterInvert.hpp \
-    Filters/filterMedian.hpp
+    Filters/filterMedian.hpp \
+    Filters/filterSobel.hpp
 
 FORMS += \
         MainWindow.ui \
@@ -30,7 +32,8 @@ FORMS += \
     Filters/filterGamma.ui \
     Filters/filterGrayscale.ui \
     Filters/filterInvert.ui \
-    Filters/filterMedian.ui
+    Filters/filterMedian.ui \
+    Filters/filterSobel.ui
 
 INCLUDEPATH += \
 	../include

@@ -6,6 +6,7 @@
 #include "ImageLib/Filters/Grayscale.hpp"
 #include "ImageLib/Filters/Gamma.hpp"
 #include "ImageLib/Filters/Median3.hpp"
+#include "ImageLib/Filters/Sobel.hpp"
 
 namespace ImageLib
 {
@@ -68,6 +69,11 @@ IGamma* CreateGammaFilter()
 IMedian3* CreateMedian3Filter()
 {
 	return new Median3();
+}
+
+ISobel* CreateSobelFilter()
+{
+	return new Sobel();
 }
 
 }
