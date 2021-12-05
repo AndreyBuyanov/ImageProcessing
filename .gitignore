@@ -7,3 +7,5 @@
 /build
 /cmake-build-*
 /.qt_for_python
+/out
+CMakeSettings.json
