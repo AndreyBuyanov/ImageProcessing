@@ -15,7 +15,8 @@ SOURCES += \
     Filters/filterInvert.cpp \
     Filters/filterMedian.cpp \
     Filters/filterSobel.cpp \
-    Filters/filterRoberts.cpp
+    Filters/filterRoberts.cpp \
+    Filters/filterCanny.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -26,7 +27,8 @@ HEADERS += \
     Filters/filterInvert.hpp \
     Filters/filterMedian.hpp \
     Filters/filterSobel.hpp \
-    Filters/filterRoberts.hpp
+    Filters/filterRoberts.hpp \
+    Filters/filterCanny.hpp
 
 FORMS += \
         MainWindow.ui \
@@ -36,7 +38,8 @@ FORMS += \
     Filters/filterInvert.ui \
     Filters/filterMedian.ui \
     Filters/filterSobel.ui \
-    Filters/filterRoberts.ui
+    Filters/filterRoberts.ui \
+    Filters/filterCanny.ui
 
 INCLUDEPATH += \
 	../include

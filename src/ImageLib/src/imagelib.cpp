@@ -8,6 +8,7 @@
 #include "ImageLib/Filters/Median3.hpp"
 #include "ImageLib/Filters/Sobel.hpp"
 #include "ImageLib/Filters/Roberts.hpp"
+#include "ImageLib/Filters/Canny.hpp"
 
 namespace ImageLib
 {
@@ -80,6 +81,11 @@ ISobel* CreateSobelFilter()
 IRoberts* CreateRobertsFilter()
 {
 	return new Roberts();
+}
+
+ICanny* CreateCannyFilter()
+{
+	return new Canny();
 }
 
 }

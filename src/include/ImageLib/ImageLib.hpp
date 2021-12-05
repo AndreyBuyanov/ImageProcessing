@@ -59,6 +59,7 @@ class IGamma;
 class IMedian3;
 class ISobel;
 class IRoberts;
+class ICanny;
 
 ImageLib_API IInvert* CreateInvertFilter();
 
@@ -73,6 +74,8 @@ ImageLib_API IMedian3* CreateMedian3Filter();
 ImageLib_API ISobel* CreateSobelFilter();
 
 ImageLib_API IRoberts* CreateRobertsFilter();
+
+ImageLib_API ICanny* CreateCannyFilter();
 
 }
 
