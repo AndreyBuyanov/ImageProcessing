@@ -6,3 +6,4 @@
 /src/Editor/Editor.pro.user
 /build
 /cmake-build-*
+/.qt_for_python
