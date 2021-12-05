@@ -2,7 +2,7 @@
 #include "ImageLib/Thread.hpp"
 
 #include "ImageLib/Filters/Invert.hpp"
-#include "ImageLib/Filters/Convultion3x3.hpp"
+#include "ImageLib/Filters/Convolution3x3.hpp"
 #include "ImageLib/Filters/Grayscale.hpp"
 #include "ImageLib/Filters/Gamma.hpp"
 #include "ImageLib/Filters/Median3.hpp"
@@ -52,9 +52,9 @@ IInvert* CreateInvertFilter()
 	return new Invert();
 }
 
-IConvultion3x3* CreateConvultion3x3Filter()
+IConvolution3x3* CreateConvolution3x3Filter()
 {
-	return new Convultion3x3();
+	return new Convolution3x3();
 }
 
 IGrayscale* CreateGrayscaleFilter()

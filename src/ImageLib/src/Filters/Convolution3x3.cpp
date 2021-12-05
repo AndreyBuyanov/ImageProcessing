@@ -1,4 +1,4 @@
-#include "ImageLib/Filters/Convultion3x3.hpp"
+#include "ImageLib/Filters/Convolution3x3.hpp"
 #include "ImageLib/ImageLib.hpp"
 
 #include <memory>
@@ -15,19 +15,19 @@ namespace Filters
 
 using ImageLib::CreateThread;
 
-Convultion3x3::Convultion3x3() :
+Convolution3x3::Convolution3x3() :
 	m_Bitmap(nullptr),
 	m_ProgressEventHandler(nullptr),
 	m_FilterControlEventHandler(nullptr),
 	m_Thread(CreateThread(this)),
 	m_Kernel(Kernel3x3()) {}
 
-void Convultion3x3::ProcessBitmap()
+void Convolution3x3::ProcessBitmap()
 {
 	m_Thread->Start();
 }
 
-void Convultion3x3::SetBitmap(
+void Convolution3x3::SetBitmap(
 	IBitmap *bitmap)
 {
 	if (m_Thread->IsStopped()) {
@@ -35,7 +35,7 @@ void Convultion3x3::SetBitmap(
 	}
 }
 
-void Convultion3x3::RegisterProgressEventHandler(
+void Convolution3x3::RegisterProgressEventHandler(
 	IProgressEventHandler *handler)
 {
 	if (m_Thread->IsStopped()) {
@@ -43,7 +43,7 @@ void Convultion3x3::RegisterProgressEventHandler(
 	}
 }
 
-void Convultion3x3::RegisterFilterControlEventHandler(
+void Convolution3x3::RegisterFilterControlEventHandler(
 	IFilterControlEventHandler *handler)
 {
 	if (m_Thread->IsStopped()) {
@@ -51,12 +51,12 @@ void Convultion3x3::RegisterFilterControlEventHandler(
 	}
 }
 
-string Convultion3x3::GetName() const
+string Convolution3x3::GetName() const
 {
-    return "Convultion 3x3";
+    return "Convolution 3x3";
 }
 
-void Convultion3x3::SetKernel(
+void Convolution3x3::SetKernel(
 	const Kernel3x3 &kernel)
 {
 	if (m_Thread->IsStopped()) {
@@ -64,7 +64,7 @@ void Convultion3x3::SetKernel(
 	}
 }
 
-void Convultion3x3::Run()
+void Convolution3x3::Run()
 {
 	if (m_FilterControlEventHandler) {
 		m_FilterControlEventHandler->FilterStarted();

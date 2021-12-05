@@ -53,7 +53,7 @@ ImageLib_API IThread* CreateThread(
 namespace Filters {
 
 class IInvert;
-class IConvultion3x3;
+class IConvolution3x3;
 class IGrayscale;
 class IGamma;
 class IMedian3;
@@ -62,7 +62,7 @@ class IRoberts;
 
 ImageLib_API IInvert* CreateInvertFilter();
 
-ImageLib_API IConvultion3x3* CreateConvultion3x3Filter();
+ImageLib_API IConvolution3x3* CreateConvolution3x3Filter();
 
 ImageLib_API IGrayscale* CreateGrayscaleFilter();
 

@@ -1,5 +1,5 @@
-#include "filterConvultion.hpp"
-#include "ui_filterConvultion.h"
+#include "filterConvolution.hpp"
+#include "ui_filterConvolution.h"
 
 #include <vector>
 
@@ -7,7 +7,7 @@ using std::vector;
 using std::pair;
 using std::make_pair;
 
-using ImageLib::Filters::CreateConvultion3x3Filter;
+using ImageLib::Filters::CreateConvolution3x3Filter;
 
 using ImageLib::Filters::Kernel3x3;
 
@@ -35,10 +35,10 @@ const vector<pair<QString, Kernel3x3>> presets =
         -1.0f, -1.0f, -1.0f))
 };
 
-filterConvultion::filterConvultion(QWidget *parent) :
+filterConvolution::filterConvolution(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::filterConvultion),
-    m_Convultion3x3(CreateConvultion3x3Filter())
+    ui(new Ui::filterConvolution),
+    m_Convolution3x3(CreateConvolution3x3Filter())
 {
     ui->setupUi(this);
     connect(ui->cbPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(loadPreset(int)));
@@ -47,12 +47,12 @@ filterConvultion::filterConvultion(QWidget *parent) :
     }
 }
 
-filterConvultion::~filterConvultion()
+filterConvolution::~filterConvolution()
 {
     delete ui;
 }
 
-void filterConvultion::loadPreset(int index)
+void filterConvolution::loadPreset(int index)
 {
     Kernel3x3 k = presets[index].second;
     ui->le11->setText(QString::number(k.k1));
@@ -64,10 +64,10 @@ void filterConvultion::loadPreset(int index)
     ui->le31->setText(QString::number(k.k7));
     ui->le32->setText(QString::number(k.k8));
     ui->le33->setText(QString::number(k.k9));
-    m_Convultion3x3->SetKernel(k);
+    m_Convolution3x3->SetKernel(k);
 }
 
-void filterConvultion::ApplyParams()
+void filterConvolution::ApplyParams()
 {
     Kernel3x3 kernel = {
         ui->le11->text().toFloat(),
@@ -80,5 +80,5 @@ void filterConvultion::ApplyParams()
         ui->le32->text().toFloat(),
         ui->le33->text().toFloat() };
 
-    m_Convultion3x3->SetKernel(kernel);
+    m_Convolution3x3->SetKernel(kernel);
 }

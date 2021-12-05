@@ -56,11 +56,11 @@ struct Kernel3x3
 
 };
 
-class IConvultion3x3 :
+class IConvolution3x3 :
 	public IFilter
 {
 public:
-	virtual ~IConvultion3x3() {}
+	virtual ~IConvolution3x3() {}
 
 	virtual void SetKernel(
 		const Kernel3x3 &kerenl) = 0;

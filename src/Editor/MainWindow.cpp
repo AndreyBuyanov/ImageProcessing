@@ -6,7 +6,7 @@
 
 #include "ImageLib/IBitmap.hpp"
 
-#include "Filters/filterConvultion.hpp"
+#include "Filters/filterConvolution.hpp"
 #include "Filters/filterGamma.hpp"
 #include "Filters/filterGrayscale.hpp"
 #include "Filters/filterInvert.hpp"
@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     IFilterUI* f = nullptr;
 
-    f = new filterConvultion(ui->frFilter);
+    f = new filterConvolution(ui->frFilter);
     AddFilter(f);
 
     f = new filterGamma(ui->frFilter);
