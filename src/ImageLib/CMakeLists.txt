@@ -19,11 +19,8 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-#find_package(FreeImage)
-
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/include
-#	${FreeImage_INCLUDE_DIR}
 )
 
 add_library(${PROJECT_NAME}
@@ -31,10 +28,6 @@ add_library(${PROJECT_NAME}
 	${SRCS}
 	${HDRS}
 )
-
-#target_link_libraries(${PROJECT_NAME}
-#	${FreeImage_LIBRARY}
-#)
 
 set_target_properties(${PROJECT_NAME}
 	PROPERTIES
