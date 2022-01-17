@@ -6,10 +6,6 @@ set(CMAKE_INCLUDE_CURRENTUI_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt5Core)
-find_package(Qt5Gui)
-find_package(Qt5Widgets)
-
 file(GLOB EDITOR_SRCS 
 	"${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
 )
@@ -61,8 +57,6 @@ add_executable(${PROJECT_NAME} WIN32
 
 set(EDITOR_LIBRARIES
 	ImageLib
-	Qt5::Core
-	Qt5::Gui
 	Qt5::Widgets
 )
 
