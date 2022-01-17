@@ -1,12 +1,10 @@
 #include "filterRoberts.hpp"
 #include "ui_filterRoberts.h"
 
-using ImageLib::Filters::CreateRobertsFilter;
-
 filterRoberts::filterRoberts(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::filterRoberts),
-    m_Roberts(CreateRobertsFilter())
+    m_Roberts(ImageLib::Filters::CreateRobertsFilter())
 {
     ui->setupUi(this);
 }

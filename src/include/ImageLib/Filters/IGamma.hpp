@@ -2,20 +2,17 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class IGamma :
 	public IFilter
 {
 public:
-	virtual ~IGamma() {}
+	~IGamma() override = default;
 
 	virtual void SetGamma(
-		const float gamma) = 0;
+		float gamma) = 0;
 };
 
-}
 }

@@ -2,17 +2,14 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class ISobel :
 	public IFilter
 {
 public:
-	virtual ~ISobel() {}
+	~ISobel() override = default;
 };
 
-}
 }

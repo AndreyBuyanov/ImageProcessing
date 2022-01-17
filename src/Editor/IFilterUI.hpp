@@ -4,16 +4,14 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-using ImageLib::Filters::IFilter;
-
 class IFilterUI
 {
 public:
-	virtual ~IFilterUI() {}
+	virtual ~IFilterUI() = default;
 
 	virtual QWidget* GetUI() = 0;
 
-	virtual IFilter* GetFilter() = 0;
+	virtual ImageLib::Filters::IFilter* GetFilter() = 0;
 
 	virtual void ApplyParams() = 0;
 };

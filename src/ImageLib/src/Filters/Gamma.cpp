@@ -3,9 +3,7 @@
 
 #include <cmath>
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -46,7 +44,7 @@ void Gamma::RegisterFilterControlEventHandler(
 	}
 }
 
-string Gamma::GetName() const
+std::string Gamma::GetName() const
 {
     return "Gamma";
 }
@@ -94,5 +92,4 @@ void Gamma::Run()
 	}
 }
 
-}
 }

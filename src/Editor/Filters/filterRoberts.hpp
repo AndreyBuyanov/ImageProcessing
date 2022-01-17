@@ -8,10 +8,6 @@
 
 #include "ImageLib/Filters/IRoberts.hpp"
 
-using std::unique_ptr;
-
-using ImageLib::Filters::IRoberts;
-
 namespace Ui {
 class filterRoberts;
 }
@@ -24,15 +20,15 @@ class filterRoberts :
 
 public:
     explicit filterRoberts(QWidget *parent = nullptr);
-    ~filterRoberts();
+    ~filterRoberts() override;
 
     // IFilterUI
-    QWidget* GetUI() { return this; }
-    IFilter* GetFilter() { return m_Roberts.get(); }
-    void ApplyParams() {}
+    QWidget* GetUI() override { return this; }
+    ImageLib::Filters::IFilter* GetFilter() override { return m_Roberts.get(); }
+    void ApplyParams() override {}
 private:
     Ui::filterRoberts *ui;
-    unique_ptr<IRoberts> m_Roberts;
+    std::unique_ptr<ImageLib::Filters::IRoberts> m_Roberts;
 };
 
 #endif // FILTERROBERTS_HPP

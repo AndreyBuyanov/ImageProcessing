@@ -8,17 +8,17 @@ namespace ImageLib
 class BitmapView
 {
 public:
-    BitmapView(
+    explicit BitmapView(
         IBitmap* bitmap);
     void SetPixel(
-        const uint32_t x,
-        const uint32_t y,
-        const uint32_t channel,
-        const uint8_t value) /*noexcept(false)*/;
-    uint8_t GetPixel(
-        const uint32_t x,
-        const uint32_t y,
-        const uint32_t channel) const /*noexcept(false)*/;
+        uint32_t x,
+        uint32_t y,
+        uint32_t channel,
+        uint8_t value) /*noexcept(false)*/;
+    [[nodiscard]] uint8_t GetPixel(
+        uint32_t x,
+        uint32_t y,
+        uint32_t channel) const /*noexcept(false)*/;
 private:
     IBitmap* m_Bitmap;
 };

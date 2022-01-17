@@ -1,9 +1,7 @@
 #include "ImageLib/Filters/Grayscale.hpp"
 #include "ImageLib/ImageLib.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -43,7 +41,7 @@ void Grayscale::RegisterFilterControlEventHandler(
 	}
 }
 
-string Grayscale::GetName() const
+std::string Grayscale::GetName() const
 {
     return "Grayscale";
 }
@@ -65,7 +63,7 @@ void Grayscale::Run()
 			}
 			uint8_t *pixel = bits;
 			for (uint32_t x = 0; x < w; x++) {
-				const uint8_t gray = static_cast<uint8_t>(
+				const auto gray = static_cast<uint8_t>(
 					pixel[0] * 0.299f +
 					pixel[1] * 0.587f + 
 					pixel[2] * 0.114f);
@@ -84,5 +82,4 @@ void Grayscale::Run()
 	}
 }
 
-}
 }

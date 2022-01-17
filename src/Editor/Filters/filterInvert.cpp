@@ -1,12 +1,10 @@
 #include "filterInvert.hpp"
 #include "ui_filterInvert.h"
 
-using ImageLib::Filters::CreateInvertFilter;
-
 filterInvert::filterInvert(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::filterInvert),
-    m_Invert(CreateInvertFilter())
+    m_Invert(ImageLib::Filters::CreateInvertFilter())
 {
     ui->setupUi(this);
 }

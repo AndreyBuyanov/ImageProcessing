@@ -2,17 +2,14 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class IMedian3 :
 	public IFilter
 {
 public:
-	virtual ~IMedian3() {}
+	~IMedian3() override = default;
 };
 
-}
 }

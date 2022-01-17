@@ -3,9 +3,7 @@
 #include "ImageLib/IBitmap.hpp"
 #include "ImageLib/Events.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IBitmap;
@@ -15,7 +13,7 @@ using ImageLib::IFilterControlEventHandler;
 class IFilter
 {
 public:
-	virtual ~IFilter() {}
+	virtual ~IFilter() = default;
 
 	virtual void ProcessBitmap() = 0;
 
@@ -27,8 +25,7 @@ public:
 	virtual void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler* handler) = 0;
 
-    virtual string GetName() const = 0;
+    [[nodiscard]] virtual std::string GetName() const = 0;
 };
 
-}
 }

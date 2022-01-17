@@ -2,17 +2,14 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class IInvert :
 	public IFilter
 {
 public:
-	virtual ~IInvert() {}
+	~IInvert() override = default;
 };
 
-}
 }

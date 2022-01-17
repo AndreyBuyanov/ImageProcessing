@@ -2,9 +2,7 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 struct Kernel3x3
@@ -50,7 +48,7 @@ struct Kernel3x3
 		k8(0.0f),
 		k9(0.0f) {}
 
-	float Summ() {
+	[[nodiscard]] float Sum() const {
 		return k1 + k2 + k3 + k4 + k5 + k6 + k7 + k8 + k9;
 	}
 
@@ -60,11 +58,10 @@ class IConvolution3x3 :
 	public IFilter
 {
 public:
-	virtual ~IConvolution3x3() {}
+	~IConvolution3x3() override = default;
 
 	virtual void SetKernel(
-		const Kernel3x3 &kerenl) = 0;
+		const Kernel3x3 &kernel) = 0;
 };
 
-}
 }

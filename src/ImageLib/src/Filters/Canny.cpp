@@ -3,9 +3,7 @@
 
 #include <opencv2/imgproc.hpp>
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -48,7 +46,7 @@ void Canny::RegisterFilterControlEventHandler(
 	}
 }
 
-string Canny::GetName() const
+std::string Canny::GetName() const
 {
     return "Canny";
 }
@@ -97,5 +95,4 @@ void Canny::Run()
 	}
 }
 
-}
 }

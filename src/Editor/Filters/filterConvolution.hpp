@@ -8,10 +8,6 @@
 
 #include "ImageLib/Filters/IConvolution.hpp"
 
-using std::unique_ptr;
-
-using ImageLib::Filters::IConvolution3x3;
-
 namespace Ui {
 class filterConvolution;
 }
@@ -24,18 +20,18 @@ class filterConvolution :
 
 public:
     explicit filterConvolution(QWidget *parent = nullptr);
-    ~filterConvolution();
+    ~filterConvolution() override;
 
 	// IFilterUI
-	QWidget* GetUI() { return this; }
-	IFilter* GetFilter() { return m_Convolution3x3.get(); }
-	void ApplyParams();
+	QWidget* GetUI() override { return this; }
+    ImageLib::Filters::IFilter* GetFilter() override { return m_Convolution3x3.get(); }
+	void ApplyParams() override;
 
 private slots:
     void loadPreset(int index);
 private:
     Ui::filterConvolution *ui;
-	unique_ptr<IConvolution3x3> m_Convolution3x3;
+	std::unique_ptr<ImageLib::Filters::IConvolution3x3> m_Convolution3x3;
 };
 
 #endif // FILTERCONVOLUTION_HPP

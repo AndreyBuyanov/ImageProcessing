@@ -14,8 +14,8 @@ namespace ImageLib
 {
 
 IBitmap* CreateBitmap(
-	const uint32_t width,
-	const uint32_t height,
+	uint32_t width,
+	uint32_t height,
 	const BitmapFormat format)
 {
 	return new Bitmap(width, height, format);
@@ -28,14 +28,14 @@ IBitmap* CreateBitmap(
 }
 
 IBitmap* LoadBitmap(
-	const string &fileName)
+	const std::string &fileName)
 {
 	return nullptr;
 }
 
 bool SaveBitmap(
 	IBitmap *bmp,
-	const string &fileName)
+	const std::string &fileName)
 {
 	return false;
 }

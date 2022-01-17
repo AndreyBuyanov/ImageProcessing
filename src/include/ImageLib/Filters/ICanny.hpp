@@ -2,26 +2,23 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class ICanny :
 	public IFilter
 {
 public:
-	virtual ~ICanny() {}
+	~ICanny() override = default;
 
 	virtual void SetSigma(
-		const float sigma) = 0;
+		float sigma) = 0;
 
 	virtual void SetLowThreshold(
-		const std::uint8_t lowThreshold) = 0;
+		std::uint8_t lowThreshold) = 0;
 
 	virtual void SetHighThreshold(
-		const std::uint8_t highThreshold) = 0;
+		std::uint8_t highThreshold) = 0;
 };
 
-}
 }

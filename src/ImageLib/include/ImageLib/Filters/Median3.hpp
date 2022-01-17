@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/IMedian.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Median3 :
 {
 public:
 	Median3();
-	virtual ~Median3() {}
+	~Median3() override = default;
 
 	// IInvert
 	void ProcessBitmap() override;
@@ -30,7 +28,7 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	// IRunnable
 	void Run() override;
@@ -42,5 +40,4 @@ private:
 	IThread *m_Thread;
 };
 
-}
 }

@@ -6,9 +6,7 @@
 #include <memory>
 #include <cmath>
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -117,5 +115,4 @@ void Sobel::Run()
 	}
 }
 
-}
 }

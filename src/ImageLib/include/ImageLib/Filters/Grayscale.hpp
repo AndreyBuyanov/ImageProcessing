@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/IGrayscale.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Grayscale :
 {
 public:
 	Grayscale();
-	virtual ~Grayscale() {}
+	~Grayscale() override = default;
 
 	// IGrayscale
 	void ProcessBitmap() override;
@@ -30,7 +28,7 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	// IRunnable
 	void Run() override;
@@ -42,5 +40,4 @@ private:
 	IThread *m_Thread;
 };
 
-}
 }

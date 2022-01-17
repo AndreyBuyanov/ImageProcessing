@@ -1,12 +1,10 @@
 #include "filterGamma.hpp"
 #include "ui_filterGamma.h"
 
-using ImageLib::Filters::CreateGammaFilter;
-
 filterGamma::filterGamma(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::filterGamma),
-    m_Gamma(CreateGammaFilter())
+    m_Gamma(ImageLib::Filters::CreateGammaFilter())
 {
     ui->setupUi(this);
 }

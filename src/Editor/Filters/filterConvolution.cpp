@@ -3,33 +3,25 @@
 
 #include <vector>
 
-using std::vector;
-using std::pair;
-using std::make_pair;
-
-using ImageLib::Filters::CreateConvolution3x3Filter;
-
-using ImageLib::Filters::Kernel3x3;
-
-const vector<pair<QString, Kernel3x3>> presets = 
+const std::vector<std::pair<QString, ImageLib::Filters::Kernel3x3>> presets =
 {
-    make_pair("Blur", Kernel3x3(
+    std::make_pair("Blur", ImageLib::Filters::Kernel3x3(
         0.0625f, 0.1250f, 0.0625f,
         0.1250f, 0.2500f, 0.1250f,
         0.0625f, 0.1250f, 0.0625f)),
-    make_pair("Laplasian", Kernel3x3(
+    std::make_pair("Laplasian", ImageLib::Filters::Kernel3x3(
          0.0f, -1.0f,  0.0f,
         -1.0f,  4.0f, -1.0f,
          0.0f, -1.0f,  0.0f)),
-    make_pair("Laplasian (diagonals)", Kernel3x3(
+    std::make_pair("Laplasian (diagonals)", ImageLib::Filters::Kernel3x3(
         -1.0f, -1.0f, -1.0f,
         -1.0f,  8.0f, -1.0f,
         -1.0f, -1.0f, -1.0f)),
-    make_pair("Embross", Kernel3x3(
+    std::make_pair("Embross", ImageLib::Filters::Kernel3x3(
         -2.0f, -1.0f,  0.0f,
         -1.0f,  1.0f,  1.0f,
          0.0f,  1.0f,  2.0f)),
-    make_pair("Outline", Kernel3x3(
+    std::make_pair("Outline", ImageLib::Filters::Kernel3x3(
         -1.0f, -1.0f, -1.0f,
         -1.0f,  8.0f, -1.0f,
         -1.0f, -1.0f, -1.0f))
@@ -38,7 +30,7 @@ const vector<pair<QString, Kernel3x3>> presets =
 filterConvolution::filterConvolution(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::filterConvolution),
-    m_Convolution3x3(CreateConvolution3x3Filter())
+    m_Convolution3x3(ImageLib::Filters::CreateConvolution3x3Filter())
 {
     ui->setupUi(this);
     connect(ui->cbPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(loadPreset(int)));
@@ -54,7 +46,7 @@ filterConvolution::~filterConvolution()
 
 void filterConvolution::loadPreset(int index)
 {
-    Kernel3x3 k = presets[index].second;
+    ImageLib::Filters::Kernel3x3 k = presets[index].second;
     ui->le11->setText(QString::number(k.k1));
     ui->le12->setText(QString::number(k.k2));
     ui->le13->setText(QString::number(k.k3));
@@ -69,7 +61,7 @@ void filterConvolution::loadPreset(int index)
 
 void filterConvolution::ApplyParams()
 {
-    Kernel3x3 kernel = {
+    ImageLib::Filters::Kernel3x3 kernel = {
         ui->le11->text().toFloat(),
         ui->le12->text().toFloat(),
         ui->le13->text().toFloat(),

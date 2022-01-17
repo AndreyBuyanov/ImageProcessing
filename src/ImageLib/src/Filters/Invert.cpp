@@ -1,9 +1,7 @@
 #include "ImageLib/Filters/Invert.hpp"
 #include "ImageLib/ImageLib.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -43,7 +41,7 @@ void Invert::RegisterFilterControlEventHandler(
 	}
 }
 
-string Invert::GetName() const
+std::string Invert::GetName() const
 {
     return "Invert";
 }
@@ -82,5 +80,4 @@ void Invert::Run()
 	}
 }
 
-}
 }

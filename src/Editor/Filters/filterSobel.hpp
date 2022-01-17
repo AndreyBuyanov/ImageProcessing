@@ -8,10 +8,6 @@
 
 #include "ImageLib/Filters/ISobel.hpp"
 
-using std::unique_ptr;
-
-using ImageLib::Filters::ISobel;
-
 namespace Ui {
 class filterSobel;
 }
@@ -24,15 +20,15 @@ class filterSobel :
 
 public:
     explicit filterSobel(QWidget *parent = nullptr);
-    ~filterSobel();
+    ~filterSobel() override;
 
     // IFilterUI
-    QWidget* GetUI() { return this; }
-    IFilter* GetFilter() { return m_Sobel.get(); }
-    void ApplyParams() {}
+    QWidget* GetUI() override { return this; }
+    ImageLib::Filters::IFilter* GetFilter() override { return m_Sobel.get(); }
+    void ApplyParams() override {}
 private:
     Ui::filterSobel *ui;
-    unique_ptr<ISobel> m_Sobel;
+    std::unique_ptr<ImageLib::Filters::ISobel> m_Sobel;
 };
 
 #endif // FILTERSOBEL_HPP

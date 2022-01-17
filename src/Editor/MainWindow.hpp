@@ -14,35 +14,28 @@
 
 #include "IFilterUI.hpp"
 
-using std::unique_ptr;
-using std::vector;
-
-using ImageLib::IBitmap;
-using ImageLib::IFilterControlEventHandler;
-using ImageLib::IProgressEventHandler;
-
 namespace Ui {
 class MainWindow;
 }
 
 class MainWindow :
-        public QMainWindow,
-        public IFilterControlEventHandler,
-		public IProgressEventHandler
+    public QMainWindow,
+    public ImageLib::IFilterControlEventHandler,
+    public ImageLib::IProgressEventHandler
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
     // IFilterControlEventHandler
-    void FilterStarted();
-    void FilterFinished();
+    void FilterStarted() override;
+    void FilterFinished() override;
 
 	// IProgressEventHandler
 	void UpdateProgress(
-		const int32_t percent);
+		int32_t percent) override;
 
 private slots:
     void on_actionOpen_triggered();
@@ -62,7 +55,7 @@ private:
 	QLabel *m_FilterTimeLabel;
 
     QImage m_Image;
-    unique_ptr<IBitmap> m_Bitmap;
+    std::unique_ptr<ImageLib::IBitmap> m_Bitmap;
     IFilterUI* m_CurrentFilter;
 
     void AddFilter(IFilterUI* f);

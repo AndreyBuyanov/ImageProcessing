@@ -15,17 +15,17 @@ class Thread:
 	public IThread
 {
 public:
-	Thread(
+	explicit Thread(
 		IRunnable *method);
 
-	~Thread();
+	~Thread() override;
 
 	// IThread
-	void Start();
+	void Start() override;
 
-	void Stop();
+	void Stop() override;
 
-	bool IsStopped();
+    [[nodiscard]] bool IsStopped() override;
 
 private:
 	IRunnable *m_Method;

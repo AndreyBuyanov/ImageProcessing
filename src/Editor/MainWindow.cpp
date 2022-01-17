@@ -15,10 +15,6 @@
 #include "Filters/filterRoberts.hpp"
 #include "Filters/filterCanny.hpp"
 
-using ImageLib::CreateBitmap;
-using ImageLib::BitmapInfo;
-using ImageLib::BitmapFormat;
-
 Q_DECLARE_METATYPE(IFilterUI*)
 
 void MainWindow::AddFilter(IFilterUI* f)
@@ -111,11 +107,11 @@ void MainWindow::on_actionOpen_triggered()
         QImage tmpImage(fileName);
         m_Image = tmpImage.convertToFormat(QImage::Format_ARGB32);
         ui->canvas->setImage(&m_Image);
-        BitmapInfo info = {
+        ImageLib::BitmapInfo info = {
             m_Image.bits(),
             static_cast<uint32_t>(m_Image.width()),
             static_cast<uint32_t>(m_Image.height()),
-            BitmapFormat::RGBA };
+            ImageLib::BitmapFormat::RGBA };
 		m_Bitmap.reset(CreateBitmap(info));
         ui->canvas->repaint();
     }

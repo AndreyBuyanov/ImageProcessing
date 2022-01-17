@@ -2,17 +2,14 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class IRoberts :
 	public IFilter
 {
 public:
-	virtual ~IRoberts() {}
+	~IRoberts() override = default;
 };
 
-}
 }

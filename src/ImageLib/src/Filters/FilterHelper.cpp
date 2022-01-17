@@ -4,13 +4,9 @@
 #include "ImageLib/BitmapView.hpp"
 
 #include <numeric>
-#include <algorithm>
-#include <limits>
 #include <cstring>
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 void FilterHelper::Convolution(
@@ -114,7 +110,7 @@ std::unique_ptr<IBitmap> FilterHelper::Grayscale(
         std::uint8_t* dst = result->Data();
 		for (std::uint32_t y = 0; y < h; y++) {
 			for (std::uint32_t x = 0; x < w; x++) {
-				const std::uint8_t gray = static_cast<std::uint8_t>(
+				const auto gray = static_cast<std::uint8_t>(
 					src[0] * 0.299f +
 					src[1] * 0.587f + 
 					src[2] * 0.114f);
@@ -130,5 +126,4 @@ std::unique_ptr<IBitmap> FilterHelper::Grayscale(
     return result;
 }
 
-}
 }

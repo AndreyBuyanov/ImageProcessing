@@ -6,9 +6,7 @@
 
 #include <memory>
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 class FilterHelper
@@ -44,5 +42,4 @@ inline const T& clamp(const T& v, const T& lo, const T& hi)
     }
 }
 
-}
 }

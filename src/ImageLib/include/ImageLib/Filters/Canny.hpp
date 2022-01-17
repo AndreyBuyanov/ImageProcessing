@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/ICanny.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Canny :
 {
 public:
 	Canny();
-	virtual ~Canny() {}
+	~Canny() override = default;
 
 	// IFilter
 	void ProcessBitmap() override;
@@ -30,17 +28,17 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	// ICanny
 	void SetSigma(
-		const float sigma) override;
+		float sigma) override;
 
 	void SetLowThreshold(
-		const std::uint8_t lowThreshold) override;
+		std::uint8_t lowThreshold) override;
 
 	void SetHighThreshold(
-		const std::uint8_t highThreshold) override;
+		std::uint8_t highThreshold) override;
 
 	// IRunnable
 	void Run() override;
@@ -55,5 +53,4 @@ private:
 	std::uint8_t m_HighThreshold;
 };
 
-}
 }

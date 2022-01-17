@@ -23,7 +23,7 @@ Bitmap::Bitmap(
 	case BitmapFormat::Grayscale:
 		bpp = 8;
 		break;
-	}
+    }
 	if (bpp != 0) {
 		m_BitmapInfo.data = new uint8_t[m_BitmapInfo.width * m_BitmapInfo.height * (bpp / 8)];
 	}
@@ -60,7 +60,7 @@ BitmapFormat Bitmap::Format() const
 	return m_BitmapInfo.format;
 }
 
-void Bitmap::Unload()
+void Bitmap::Unload() const
 {
 	if (m_BitmapInfo.data && m_Ownership) {
 		delete[] m_BitmapInfo.data;

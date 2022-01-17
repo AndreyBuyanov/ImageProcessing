@@ -7,7 +7,7 @@ namespace ImageLib
 {
 
 static void ExpandLine(
-    const std::size_t inputSize,
+    std::size_t inputSize,
     const uint8_t* input,
     std::uint8_t* output)
 {
@@ -56,9 +56,9 @@ std::unique_ptr<IBitmap> BitmapHelper::CreateEdgeHandledBitmap(
 
 std::size_t BitmapHelper::GetPixelPosition(
     const IBitmap* bitmap,
-    const std::uint32_t x,
-    const std::uint32_t y,
-    const std::uint32_t channel)
+    std::uint32_t x,
+    std::uint32_t y,
+    std::uint32_t channel)
 {
     /*if (x >= bitmap->Width() || y >= bitmap->Height()) {
         throw std::out_of_range("");

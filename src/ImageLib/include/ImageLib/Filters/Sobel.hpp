@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/ISobel.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Sobel :
 {
 public:
 	Sobel();
-	virtual ~Sobel() {}
+	~Sobel() override = default;
 
 	// ISobel
 	void ProcessBitmap() override;
@@ -30,7 +28,7 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    std::string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	// IRunnable
 	void Run() override;
@@ -42,5 +40,4 @@ private:
 	IThread *m_Thread;
 };
 
-}
 }

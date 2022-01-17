@@ -1,12 +1,10 @@
 #include "filterSobel.hpp"
 #include "ui_filterSobel.h"
 
-using ImageLib::Filters::CreateSobelFilter;
-
 filterSobel::filterSobel(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::filterSobel),
-    m_Sobel(CreateSobelFilter())
+    m_Sobel(ImageLib::Filters::CreateSobelFilter())
 {
     ui->setupUi(this);
 }

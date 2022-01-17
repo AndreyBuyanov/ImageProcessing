@@ -13,18 +13,18 @@ BitmapView::BitmapView(
 }
 
 void BitmapView::SetPixel(
-    const uint32_t x,
-    const uint32_t y,
-    const uint32_t channel,
-    const uint8_t value)
+    uint32_t x,
+    uint32_t y,
+    uint32_t channel,
+    uint8_t value)
 {
     m_Bitmap->Data()[BitmapHelper::GetPixelPosition(m_Bitmap, x, y, channel)] = value;
 }
 
 uint8_t BitmapView::GetPixel(
-    const uint32_t x,
-    const uint32_t y,
-    const uint32_t channel) const
+    uint32_t x,
+    uint32_t y,
+    uint32_t channel) const
 {
     return m_Bitmap->Data()[BitmapHelper::GetPixelPosition(m_Bitmap, x, y, channel)];
 }

@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/IRoberts.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Roberts :
 {
 public:
 	Roberts();
-	virtual ~Roberts() {}
+	~Roberts() override = default;
 
 	// IRoberts
 	void ProcessBitmap() override;
@@ -30,7 +28,7 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    std::string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	// IRunnable
 	void Run() override;
@@ -42,5 +40,4 @@ private:
 	IThread *m_Thread;
 };
 
-}
 }

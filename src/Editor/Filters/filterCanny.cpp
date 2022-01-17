@@ -1,12 +1,10 @@
 #include "filterCanny.hpp"
 #include "ui_filterCanny.h"
 
-using ImageLib::Filters::CreateCannyFilter;
-
 filterCanny::filterCanny(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::filterCanny),
-    m_Canny(CreateCannyFilter())
+    m_Canny(ImageLib::Filters::CreateCannyFilter())
 {
     ui->setupUi(this);
 }

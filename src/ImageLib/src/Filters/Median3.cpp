@@ -4,11 +4,7 @@
 #include <memory>
 #include <cstring>
 
-using std::unique_ptr;
-
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -48,7 +44,7 @@ void Median3::RegisterFilterControlEventHandler(
 	}
 }
 
-string Median3::GetName() const
+    std::string Median3::GetName() const
 {
     return "Median 3";
 }
@@ -61,7 +57,7 @@ void Median3::Run()
 
 	if (m_Bitmap) {
 
-		unique_ptr<IBitmap> tempBitmap(CreateBitmap(
+        std::unique_ptr<IBitmap> tempBitmap(CreateBitmap(
 			m_Bitmap->Width() + 2,
 			m_Bitmap->Height() + 2,
 			m_Bitmap->Format()));
@@ -144,5 +140,4 @@ void Median3::Run()
 	}
 }
 
-}
 }

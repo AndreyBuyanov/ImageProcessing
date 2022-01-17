@@ -6,7 +6,7 @@ namespace ImageLib
 class IRunnable
 {
 public:
-	virtual ~IRunnable() {}
+	virtual ~IRunnable() = default;
 
 	virtual void Run() = 0;
 };
@@ -14,7 +14,7 @@ public:
 class IThread
 {
 public:
-	virtual ~IThread() {}
+	virtual ~IThread() = default;
 
 	virtual void Start() = 0;
 

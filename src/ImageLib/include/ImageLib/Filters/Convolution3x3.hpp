@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/IConvolution.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Convolution3x3 :
 {
 public:
 	Convolution3x3();
-	virtual ~Convolution3x3() {}
+	~Convolution3x3() override = default;
 
 	// IConvolution
 	void ProcessBitmap() override;
@@ -30,7 +28,7 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	void SetKernel(
 		const Kernel3x3 &kernel) override;
@@ -46,5 +44,4 @@ private:
 	Kernel3x3 m_Kernel;
 };
 
-}
 }

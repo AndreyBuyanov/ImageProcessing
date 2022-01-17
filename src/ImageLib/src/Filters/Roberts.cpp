@@ -1,15 +1,12 @@
 #include "ImageLib/Filters/Roberts.hpp"
 #include "ImageLib/ImageLib.hpp"
-#include "ImageLib/BitmapHelper.hpp"
 #include "ImageLib/BitmapView.hpp"
 #include "ImageLib/Filters/FilterHelper.hpp"
 
 #include <memory>
 #include <cmath>
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -117,5 +114,4 @@ void Roberts::Run()
 	}
 }
 
-}
 }

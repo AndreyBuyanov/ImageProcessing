@@ -19,8 +19,6 @@
 #	endif
 #endif
 
-using std::string;
-
 namespace ImageLib
 {
 
@@ -33,19 +31,19 @@ struct BitmapInfo;
 enum class BitmapFormat;
 
 ImageLib_API IBitmap* CreateBitmap(
-	const uint32_t width,
-	const uint32_t height,
-	const BitmapFormat format);
+	uint32_t width,
+	uint32_t height,
+	BitmapFormat format);
 
 ImageLib_API IBitmap* CreateBitmap(
 	BitmapInfo &info);
 
 ImageLib_API IBitmap* LoadBitmap(
-	const string &fileName);
+	const std::string &fileName);
 
 ImageLib_API bool SaveBitmap(
 	IBitmap *bmp,
-	const string &fileName);
+	const std::string &fileName);
 
 ImageLib_API IThread* CreateThread(
 	IRunnable *method);

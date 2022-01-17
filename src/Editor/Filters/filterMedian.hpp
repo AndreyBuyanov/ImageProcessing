@@ -8,10 +8,6 @@
 
 #include "ImageLib/Filters/IMedian.hpp"
 
-using std::unique_ptr;
-
-using ImageLib::Filters::IMedian3;
-
 namespace Ui {
 class filterMedian;
 }
@@ -24,15 +20,15 @@ class filterMedian :
 
 public:
     explicit filterMedian(QWidget *parent = nullptr);
-    ~filterMedian();
+    ~filterMedian() override;
 
     // IFilterUI
-    QWidget* GetUI() { return this; }
-    IFilter* GetFilter() { return m_Median3.get(); }
-    void ApplyParams() {}
+    QWidget* GetUI() override { return this; }
+    ImageLib::Filters::IFilter* GetFilter() override { return m_Median3.get(); }
+    void ApplyParams() override {}
 private:
     Ui::filterMedian *ui;
-    unique_ptr<IMedian3> m_Median3;
+    std::unique_ptr<ImageLib::Filters::IMedian3> m_Median3;
 };
 
 #endif // FILTERMEDIAN_HPP

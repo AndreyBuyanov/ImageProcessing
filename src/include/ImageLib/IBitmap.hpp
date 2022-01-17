@@ -48,15 +48,15 @@ struct BitmapInfo
 class IBitmap
 {
 public:
-	virtual ~IBitmap() {}
+	virtual ~IBitmap() = default;
 
-	virtual uint32_t Width() const = 0;
-	virtual uint32_t Height() const = 0;
+	[[nodiscard]] virtual uint32_t Width() const = 0;
+	[[nodiscard]] virtual uint32_t Height() const = 0;
 
 	virtual uint8_t* Data() = 0;
-	virtual const uint8_t* Data() const = 0;
+	[[nodiscard]] virtual const uint8_t* Data() const = 0;
 
-	virtual BitmapFormat Format() const = 0;
+	[[nodiscard]] virtual BitmapFormat Format() const = 0;
 };
 
 }

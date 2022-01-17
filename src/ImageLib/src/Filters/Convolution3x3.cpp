@@ -7,11 +7,7 @@
 #define NINT(f)   ((f >= 0) ? (int)(f + .5) : (int)(f - .5))
 #define THRESH(d) ((d > 255) ? 255 : ((d < 0) ? 0 : d))
 
-using std::unique_ptr;
-
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::CreateThread;
@@ -52,7 +48,7 @@ void Convolution3x3::RegisterFilterControlEventHandler(
 	}
 }
 
-string Convolution3x3::GetName() const
+std::string Convolution3x3::GetName() const
 {
     return "Convolution 3x3";
 }
@@ -73,7 +69,7 @@ void Convolution3x3::Run()
 
 	if (m_Bitmap) {
 
-		unique_ptr<IBitmap> tempBitmap(CreateBitmap(
+        std::unique_ptr<IBitmap> tempBitmap(CreateBitmap(
 			m_Bitmap->Width() + 2,
 			m_Bitmap->Height() + 2,
 			m_Bitmap->Format()));
@@ -94,7 +90,7 @@ void Convolution3x3::Run()
 			dst += 4;
 		}
 
-		float fsum = m_Kernel.Summ();
+		float fsum = m_Kernel.Sum();
 		if (fsum == 0)
 			fsum = 1;
 		else
@@ -147,5 +143,4 @@ void Convolution3x3::Run()
 	}
 }
 
-}
 }

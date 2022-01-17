@@ -1,5 +1,7 @@
 #include "ImageLib/Thread.hpp"
 
+#include <memory>
+
 namespace ImageLib
 {
 
@@ -37,7 +39,7 @@ void Thread::Start()
 {
 	if (m_Stopped) {
 		Join();
-		m_ThreadObject.reset(new thread(ThreadFunc(m_Method, &m_Stopped)));
+		m_ThreadObject = std::make_unique<thread>(ThreadFunc(m_Method, &m_Stopped));
 		m_Stopped = false;
 	}
 }

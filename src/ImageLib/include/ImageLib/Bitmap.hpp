@@ -11,27 +11,27 @@ class Bitmap :
 public:
 	Bitmap();
 	Bitmap(
-		const uint32_t width,
-		const uint32_t height,
-		const BitmapFormat format);
-	Bitmap(
+		uint32_t width,
+		uint32_t height,
+		BitmapFormat format);
+	explicit Bitmap(
 		BitmapInfo &info);
 
-	~Bitmap();
+	~Bitmap() override;
 
 	// IBitmap
-	uint32_t Width() const override;
-	uint32_t Height() const override;
+	[[nodiscard]] uint32_t Width() const override;
+    [[nodiscard]] uint32_t Height() const override;
 
-	uint8_t* Data() override;
-	const uint8_t* Data() const override;
+    [[nodiscard]] uint8_t* Data() override;
+	[[nodiscard]] const uint8_t* Data() const override;
 
-	BitmapFormat Format() const override;
+    [[nodiscard]] BitmapFormat Format() const override;
 
 private:
 	BitmapInfo m_BitmapInfo;
 	bool m_Ownership;
-	void Unload();
+	void Unload() const;
 };
 
 }

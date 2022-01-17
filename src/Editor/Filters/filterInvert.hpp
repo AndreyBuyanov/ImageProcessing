@@ -8,10 +8,6 @@
 
 #include "ImageLib/Filters/IInvert.hpp"
 
-using std::unique_ptr;
-
-using ImageLib::Filters::IInvert;
-
 namespace Ui {
 class filterInvert;
 }
@@ -24,15 +20,15 @@ class filterInvert :
 
 public:
     explicit filterInvert(QWidget *parent = nullptr);
-    ~filterInvert();
+    ~filterInvert() override;
 
     // IFilterUI
-    QWidget* GetUI() { return this; }
-    IFilter* GetFilter() { return m_Invert.get(); }
-    void ApplyParams() {}
+    QWidget* GetUI() override { return this; }
+    ImageLib::Filters::IFilter* GetFilter() override { return m_Invert.get(); }
+    void ApplyParams() override {}
 private:
     Ui::filterInvert *ui;
-    unique_ptr<IInvert> m_Invert;
+    std::unique_ptr<ImageLib::Filters::IInvert> m_Invert;
 };
 
 #endif // FILTERINVERT_HPP

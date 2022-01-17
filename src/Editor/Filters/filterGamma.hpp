@@ -8,10 +8,6 @@
 
 #include "ImageLib/Filters/IGamma.hpp"
 
-using std::unique_ptr;
-
-using ImageLib::Filters::IGamma;
-
 namespace Ui {
 class filterGamma;
 }
@@ -24,15 +20,15 @@ class filterGamma :
 
 public:
     explicit filterGamma(QWidget *parent = nullptr);
-    ~filterGamma();
+    ~filterGamma() override;
 
     // IFilterUI
-    QWidget* GetUI() { return this; }
-    IFilter* GetFilter() { return m_Gamma.get(); }
-    void ApplyParams();
+    QWidget* GetUI() override { return this; }
+    ImageLib::Filters::IFilter* GetFilter() override { return m_Gamma.get(); }
+    void ApplyParams() override;
 private:
     Ui::filterGamma *ui;
-    unique_ptr<IGamma> m_Gamma;
+    std::unique_ptr<ImageLib::Filters::IGamma> m_Gamma;
 };
 
 #endif // FILTERGAMMA_HPP

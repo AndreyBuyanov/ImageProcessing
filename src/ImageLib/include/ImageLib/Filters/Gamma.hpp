@@ -3,9 +3,7 @@
 #include "ImageLib/Filters/IGamma.hpp"
 #include "ImageLib/IThread.hpp"
 
-namespace ImageLib
-{
-namespace Filters
+namespace ImageLib::Filters
 {
 
 using ImageLib::IRunnable;
@@ -17,7 +15,7 @@ class Gamma :
 {
 public:
 	Gamma();
-	virtual ~Gamma() {}
+	~Gamma() override = default;
 
 	// IFilter
 	void ProcessBitmap() override;
@@ -30,11 +28,11 @@ public:
 	void RegisterFilterControlEventHandler(
 		IFilterControlEventHandler *handler) override;
 
-    string GetName() const override;
+    [[nodiscard]] std::string GetName() const override;
 
 	// IGamma
 	void SetGamma(
-		const float gamma) override;
+		float gamma) override;
 
 	// IRunnable
 	void Run() override;
@@ -47,5 +45,4 @@ private:
 	float m_Gamma;
 };
 
-}
 }
