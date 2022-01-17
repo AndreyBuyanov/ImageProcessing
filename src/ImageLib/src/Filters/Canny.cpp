@@ -78,16 +78,18 @@ void Canny::Run()
 	}
 
 	if (m_Bitmap) {
-		cv::Mat work;
+		cv::Mat inputImage;
 		cv::Mat inputView {
-			static_cast<int>(m_Bitmap->Width()),
 			static_cast<int>(m_Bitmap->Height()),
+			static_cast<int>(m_Bitmap->Width()),
 			CV_8UC4,
 			m_Bitmap->Data() };
-		cv::cvtColor(inputView, work, cv::COLOR_BGRA2GRAY);
-		cv::GaussianBlur(work, work, cv::Size(3, 3), m_Sigma);
-		cv::Canny(work, work, m_LowThreshold, m_HighThreshold);
-		cv::cvtColor(work, inputView, cv::COLOR_GRAY2BGRA);
+		cv::cvtColor(inputView, inputImage, cv::COLOR_BGRA2GRAY);
+        cv::Mat blurredImage;
+		cv::GaussianBlur(inputImage, blurredImage, cv::Size(3, 3), m_Sigma);
+        cv::Mat cannyImage;
+		cv::Canny(blurredImage, cannyImage, m_LowThreshold, m_HighThreshold);
+		cv::cvtColor(cannyImage, inputView, cv::COLOR_GRAY2BGRA);
 	}
 
 	if (m_FilterControlEventHandler) {
