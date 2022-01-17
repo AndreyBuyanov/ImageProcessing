@@ -1,6 +1,7 @@
 #include "ImageLib/BitmapHelper.hpp"
 
 //#include <stdexcept>
+#include <cstring>
 
 namespace ImageLib
 {
@@ -11,7 +12,7 @@ static void ExpandLine(
     std::uint8_t* output)
 {
     output[0] = input[0];
-    memcpy(&output[1], input, inputSize * sizeof(std::uint8_t));
+    std::memcpy(&output[1], input, inputSize * sizeof(std::uint8_t));
     output[inputSize + 1] = input[inputSize - 1];
 }
 
