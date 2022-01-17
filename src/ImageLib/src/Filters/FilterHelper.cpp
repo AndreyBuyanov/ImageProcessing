@@ -105,7 +105,7 @@ std::unique_ptr<IBitmap> FilterHelper::Grayscale(
             BitmapFormat::Grayscale));
     if (BitmapFormat::Grayscale == source->Format()) {
         const std::size_t size = source->Width() * source->Height();
-        memcpy(result->Data(), source->Data(), size);
+        std::memcpy(result->Data(), source->Data(), size);
     } else if (BitmapFormat::RGBA == source->Format()) {
         const std::uint32_t w = source->Width();
 		const std::uint32_t h = source->Height();

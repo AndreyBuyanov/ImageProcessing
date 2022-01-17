@@ -87,7 +87,7 @@ void Convolution3x3::Run()
 		dst = tempBitmap->Data() + tempBitmap->Width() * 4;
 		for (uint32_t i = 0; i < h; i++) {
 			dst += 4;
-			memcpy(dst, src, srcOffset);
+			std::memcpy(dst, src, srcOffset);
 			src += srcOffset;
 			dst += srcOffset;
 			dst += 4;
