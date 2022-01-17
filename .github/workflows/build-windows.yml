@@ -19,8 +19,8 @@ jobs:
 
     - name: Configure
       shell: cmd
-      run: cmake -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo -B build -G "Visual Studio 16 2019" -T host=x64 -A x64
+      run: cmake -DCMAKE_BUILD_TYPE:STRING=Release -B build -G "Visual Studio 16 2019" -T host=x64 -A x64
 
     - name: Build
       shell: cmd
-      run: cmake --build build --config RelWithDebInfo --target ALL_BUILD
+      run: cmake --build build --config Release --target ALL_BUILD
