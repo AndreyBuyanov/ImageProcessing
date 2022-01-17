@@ -2,6 +2,7 @@
 #include "ImageLib/ImageLib.hpp"
 
 #include <memory>
+#include <cstring>
 
 #define NINT(f)   ((f >= 0) ? (int)(f + .5) : (int)(f - .5))
 #define THRESH(d) ((d > 255) ? 255 : ((d < 0) ? 0 : d))

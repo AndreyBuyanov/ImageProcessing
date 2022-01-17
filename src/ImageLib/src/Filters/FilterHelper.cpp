@@ -6,6 +6,7 @@
 #include <numeric>
 #include <algorithm>
 #include <limits>
+#include <cstring>
 
 namespace ImageLib
 {

@@ -2,6 +2,7 @@
 #include "ImageLib/ImageLib.hpp"
 
 #include <memory>
+#include <cstring>
 
 using std::unique_ptr;
 
