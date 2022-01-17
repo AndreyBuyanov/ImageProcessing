@@ -46,6 +46,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/src/include
 )
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
 add_executable(${PROJECT_NAME} WIN32
 	${EDITOR_SRCS}
 	${EDITOR_HDRS}
