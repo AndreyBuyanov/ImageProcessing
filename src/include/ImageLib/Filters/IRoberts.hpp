@@ -6,10 +6,10 @@ namespace ImageLib::Filters
 {
 
 class IRoberts :
-	public IFilter
+    public IFilter
 {
 public:
-	~IRoberts() override = default;
+    ~IRoberts() override = default;
 };
 
 }

@@ -105,23 +105,23 @@ std::unique_ptr<IBitmap> FilterHelper::Grayscale(
         std::memcpy(result->Data(), source->Data(), size);
     } else if (BitmapFormat::RGBA == source->Format()) {
         const std::uint32_t w = source->Width();
-		const std::uint32_t h = source->Height();
-		const std::uint8_t *src = source->Data();
+        const std::uint32_t h = source->Height();
+        const std::uint8_t *src = source->Data();
         std::uint8_t* dst = result->Data();
-		for (std::uint32_t y = 0; y < h; y++) {
-			for (std::uint32_t x = 0; x < w; x++) {
-				const auto gray = static_cast<std::uint8_t>(
-					src[0] * 0.299f +
-					src[1] * 0.587f + 
-					src[2] * 0.114f);
-				*dst = gray;
+        for (std::uint32_t y = 0; y < h; y++) {
+            for (std::uint32_t x = 0; x < w; x++) {
+                const auto gray = static_cast<std::uint8_t>(
+                    src[0] * 0.299f +
+                    src[1] * 0.587f + 
+                    src[2] * 0.114f);
+                *dst = gray;
                 dst++;
-				src += 4;
-			}
-			if (handler) {
-				handler->UpdateProgress(std::int32_t(float(y) / h * 100));
-			}
-		}
+                src += 4;
+            }
+            if (handler) {
+                handler->UpdateProgress(std::int32_t(float(y) / h * 100));
+            }
+        }
     }
     return result;
 }

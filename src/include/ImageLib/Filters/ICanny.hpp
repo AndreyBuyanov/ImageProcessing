@@ -6,19 +6,19 @@ namespace ImageLib::Filters
 {
 
 class ICanny :
-	public IFilter
+    public IFilter
 {
 public:
-	~ICanny() override = default;
+    ~ICanny() override = default;
 
-	virtual void SetSigma(
-		float sigma) = 0;
+    virtual void SetSigma(
+        float sigma) = 0;
 
-	virtual void SetLowThreshold(
-		std::uint8_t lowThreshold) = 0;
+    virtual void SetLowThreshold(
+        std::uint8_t lowThreshold) = 0;
 
-	virtual void SetHighThreshold(
-		std::uint8_t highThreshold) = 0;
+    virtual void SetHighThreshold(
+        std::uint8_t highThreshold) = 0;
 };
 
 }

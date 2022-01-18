@@ -31,15 +31,15 @@ void MainWindow::AddFilter(IFilterUI* f)
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-	m_FilterProgress(new QProgressBar(this)),
-	m_FilterTimeLabel(new QLabel(this)),
+    m_FilterProgress(new QProgressBar(this)),
+    m_FilterTimeLabel(new QLabel(this)),
     m_CurrentFilter(nullptr)
 {
     ui->setupUi(this);
-	m_FilterProgress->setRange(0, 100);
+    m_FilterProgress->setRange(0, 100);
 
-	ui->statusBar->addWidget(m_FilterProgress);
-	ui->statusBar->addWidget(m_FilterTimeLabel);
+    ui->statusBar->addWidget(m_FilterProgress);
+    ui->statusBar->addWidget(m_FilterTimeLabel);
 
     connect(ui->cbFilters, SIGNAL(currentIndexChanged(int)), this, SLOT(selectFilter(int)));
 
@@ -77,22 +77,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::FilterStarted()
 {
-	t.start();
-	QMetaObject::invokeMethod(m_FilterProgress, "setValue", Qt::QueuedConnection, Q_ARG(int, 0));
+    t.start();
+    QMetaObject::invokeMethod(m_FilterProgress, "setValue", Qt::QueuedConnection, Q_ARG(int, 0));
 }
 
 void MainWindow::FilterFinished()
 {
-	QMetaObject::invokeMethod(m_FilterProgress, "setValue", Qt::QueuedConnection, Q_ARG(int, 100));
-	QMetaObject::invokeMethod(ui->canvas, "repaint", Qt::QueuedConnection);
-	QString strTime = QString("Time: %1 ms").arg(t.elapsed());
-	QMetaObject::invokeMethod(m_FilterTimeLabel, "setText", Qt::QueuedConnection, Q_ARG(QString, strTime));
+    QMetaObject::invokeMethod(m_FilterProgress, "setValue", Qt::QueuedConnection, Q_ARG(int, 100));
+    QMetaObject::invokeMethod(ui->canvas, "repaint", Qt::QueuedConnection);
+    QString strTime = QString("Time: %1 ms").arg(t.elapsed());
+    QMetaObject::invokeMethod(m_FilterTimeLabel, "setText", Qt::QueuedConnection, Q_ARG(QString, strTime));
 }
 
 void MainWindow::UpdateProgress(
-	const int32_t percent)
+    const int32_t percent)
 {
-	QMetaObject::invokeMethod(m_FilterProgress, "setValue", Qt::QueuedConnection, Q_ARG(int, percent));
+    QMetaObject::invokeMethod(m_FilterProgress, "setValue", Qt::QueuedConnection, Q_ARG(int, percent));
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -112,7 +112,7 @@ void MainWindow::on_actionOpen_triggered()
             static_cast<uint32_t>(m_Image.width()),
             static_cast<uint32_t>(m_Image.height()),
             ImageLib::BitmapFormat::RGBA };
-		m_Bitmap.reset(CreateBitmap(info));
+        m_Bitmap.reset(CreateBitmap(info));
         ui->canvas->repaint();
     }
 }

@@ -47,15 +47,15 @@ filterConvolution::~filterConvolution()
 void filterConvolution::loadPreset(int index)
 {
     ImageLib::Filters::Kernel3x3 k = presets[index].second;
-    ui->le11->setText(QString::number(k.k1));
-    ui->le12->setText(QString::number(k.k2));
-    ui->le13->setText(QString::number(k.k3));
-    ui->le21->setText(QString::number(k.k4));
-    ui->le22->setText(QString::number(k.k5));
-    ui->le23->setText(QString::number(k.k6));
-    ui->le31->setText(QString::number(k.k7));
-    ui->le32->setText(QString::number(k.k8));
-    ui->le33->setText(QString::number(k.k9));
+    ui->le11->setText(QString::number(k[0][0]));
+    ui->le12->setText(QString::number(k[0][1]));
+    ui->le13->setText(QString::number(k[0][2]));
+    ui->le21->setText(QString::number(k[1][0]));
+    ui->le22->setText(QString::number(k[1][1]));
+    ui->le23->setText(QString::number(k[1][2]));
+    ui->le31->setText(QString::number(k[2][0]));
+    ui->le32->setText(QString::number(k[2][1]));
+    ui->le33->setText(QString::number(k[2][2]));
     m_Convolution3x3->SetKernel(k);
 }
 

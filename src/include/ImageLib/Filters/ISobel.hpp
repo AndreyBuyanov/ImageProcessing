@@ -6,10 +6,10 @@ namespace ImageLib::Filters
 {
 
 class ISobel :
-	public IFilter
+    public IFilter
 {
 public:
-	~ISobel() override = default;
+    ~ISobel() override = default;
 };
 
 }

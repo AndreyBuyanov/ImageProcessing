@@ -14,78 +14,78 @@ namespace ImageLib
 {
 
 IBitmap* CreateBitmap(
-	uint32_t width,
-	uint32_t height,
-	const BitmapFormat format)
+    uint32_t width,
+    uint32_t height,
+    const BitmapFormat format)
 {
-	return new Bitmap(width, height, format);
+    return new Bitmap(width, height, format);
 }
 
 IBitmap* CreateBitmap(
-	BitmapInfo &info)
+    BitmapInfo &info)
 {
-	return new Bitmap(info);
+    return new Bitmap(info);
 }
 
 IBitmap* LoadBitmap(
-	const std::string &fileName)
+    const std::string &fileName)
 {
-	return nullptr;
+    return nullptr;
 }
 
 bool SaveBitmap(
-	IBitmap *bmp,
-	const std::string &fileName)
+    IBitmap *bmp,
+    const std::string &fileName)
 {
-	return false;
+    return false;
 }
 
 IThread* CreateThread(
-	IRunnable *method)
+    IRunnable *method)
 {
-	return new Thread(method);
+    return new Thread(method);
 }
 
 namespace Filters {
 
 IInvert* CreateInvertFilter()
 {
-	return new Invert();
+    return new Invert();
 }
 
 IConvolution3x3* CreateConvolution3x3Filter()
 {
-	return new Convolution3x3();
+    return new Convolution3x3();
 }
 
 IGrayscale* CreateGrayscaleFilter()
 {
-	return new Grayscale();
+    return new Grayscale();
 }
 
 IGamma* CreateGammaFilter()
 {
-	return new Gamma();
+    return new Gamma();
 }
 
 IMedian3* CreateMedian3Filter()
 {
-	return new Median3();
+    return new Median3();
 }
 
 ISobel* CreateSobelFilter()
 {
-	return new Sobel();
+    return new Sobel();
 }
 
 IRoberts* CreateRobertsFilter()
 {
-	return new Roberts();
+    return new Roberts();
 }
 
 ICanny* CreateCannyFilter()
 {
-	return new Canny();
+    return new Canny();
 }
 
 }

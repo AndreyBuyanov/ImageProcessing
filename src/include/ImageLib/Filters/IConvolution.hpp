@@ -2,66 +2,65 @@
 
 #include "ImageLib/Filters/IFilter.hpp"
 
+#include <array>
+#include <numeric>
+
 namespace ImageLib::Filters
 {
 
 struct Kernel3x3
 {
-	float k1;
-	float k2;
-	float k3;
-	float k4;
-	float k5;
-	float k6;
-	float k7;
-	float k8;
-	float k9;
+    std::array<std::array<float, 3>, 3> kernel {};
 
-	Kernel3x3(
-		const float _k1,
-		const float _k2,
-		const float _k3,
-		const float _k4,
-		const float _k5,
-		const float _k6,
-		const float _k7,
-		const float _k8,
-		const float _k9):
-		k1(_k1),
-		k2(_k2),
-		k3(_k3),
-		k4(_k4),
-		k5(_k5),
-		k6(_k6),
-		k7(_k7),
-		k8(_k8),
-		k9(_k9) {}
+    Kernel3x3(
+        const float k11,
+        const float k12,
+        const float k13,
+        const float k21,
+        const float k22,
+        const float k23,
+        const float k31,
+        const float k32,
+        const float k33)
+    {
+        kernel = {{
+            { k11, k12, k13 },
+            { k21, k22, k23 },
+            { k31, k32, k33 }
+        }};
+    }
 
-	Kernel3x3() :
-		k1(0.0f),
-		k2(0.0f),
-		k3(0.0f),
-		k4(0.0f),
-		k5(0.0f),
-		k6(0.0f),
-		k7(0.0f),
-		k8(0.0f),
-		k9(0.0f) {}
+    Kernel3x3() = default;
 
-	[[nodiscard]] float Sum() const {
-		return k1 + k2 + k3 + k4 + k5 + k6 + k7 + k8 + k9;
-	}
+    [[nodiscard]] float Sum() const
+    {
+        float result = 0.0f;
+        for (const auto &row: kernel) {
+            result += std::accumulate(row.begin(), row.end(), 0.0f);
+        }
+        return result;
+    }
+
+    std::array<float, 3>& operator [] (const std::size_t index)
+    {
+        return kernel[index];
+    }
+
+    const std::array<float, 3>& operator [] (const std::size_t index) const
+    {
+        return kernel[index];
+    }
 
 };
 
 class IConvolution3x3 :
-	public IFilter
+    public IFilter
 {
 public:
-	~IConvolution3x3() override = default;
+    ~IConvolution3x3() override = default;
 
-	virtual void SetKernel(
-		const Kernel3x3 &kernel) = 0;
+    virtual void SetKernel(
+        const Kernel3x3 &kernel) = 0;
 };
 
 }

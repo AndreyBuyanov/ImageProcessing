@@ -6,13 +6,13 @@ namespace ImageLib::Filters
 {
 
 class IGamma :
-	public IFilter
+    public IFilter
 {
 public:
-	~IGamma() override = default;
+    ~IGamma() override = default;
 
-	virtual void SetGamma(
-		float gamma) = 0;
+    virtual void SetGamma(
+        float gamma) = 0;
 };
 
 }

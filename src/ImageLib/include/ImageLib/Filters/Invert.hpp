@@ -6,38 +6,35 @@
 namespace ImageLib::Filters
 {
 
-using ImageLib::IRunnable;
-using ImageLib::IThread;
-
 class Invert:
-	public IInvert,
-	public IRunnable
+    public IInvert,
+    public IRunnable
 {
 public:
-	Invert();
-	~Invert() override = default;
+    Invert();
+    ~Invert() override = default;
 
-	// IInvert
-	void ProcessBitmap() override;
+    // IInvert
+    void ProcessBitmap() override;
 
-	void SetBitmap(
-		IBitmap *bitmap) override;
+    void SetBitmap(
+        IBitmap *bitmap) override;
 
-	void RegisterProgressEventHandler(
-		IProgressEventHandler *handler) override;
-	void RegisterFilterControlEventHandler(
-		IFilterControlEventHandler *handler) override;
+    void RegisterProgressEventHandler(
+        IProgressEventHandler *handler) override;
+    void RegisterFilterControlEventHandler(
+        IFilterControlEventHandler *handler) override;
 
     [[nodiscard]] std::string GetName() const override;
 
-	// IRunnable
-	void Run() override;
+    // IRunnable
+    void Run() override;
 
 private:
-	IBitmap *m_Bitmap;
-	IProgressEventHandler *m_ProgressEventHandler;
-	IFilterControlEventHandler *m_FilterControlEventHandler;
-	IThread *m_Thread;
+    IBitmap *m_Bitmap;
+    IProgressEventHandler *m_ProgressEventHandler;
+    IFilterControlEventHandler *m_FilterControlEventHandler;
+    IThread *m_Thread;
 };
 
 }

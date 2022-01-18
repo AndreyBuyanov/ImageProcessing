@@ -33,9 +33,9 @@ public:
     void FilterStarted() override;
     void FilterFinished() override;
 
-	// IProgressEventHandler
-	void UpdateProgress(
-		int32_t percent) override;
+    // IProgressEventHandler
+    void UpdateProgress(
+        int32_t percent) override;
 
 private slots:
     void on_actionOpen_triggered();
@@ -50,9 +50,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-	QProgressBar *m_FilterProgress;
-	QTime t;
-	QLabel *m_FilterTimeLabel;
+    QProgressBar *m_FilterProgress;
+    QTime t;
+    QLabel *m_FilterTimeLabel;
 
     QImage m_Image;
     std::unique_ptr<ImageLib::IBitmap> m_Bitmap;

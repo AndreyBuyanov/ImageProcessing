@@ -6,10 +6,10 @@ namespace ImageLib::Filters
 {
 
 class IGrayscale :
-	public IFilter
+    public IFilter
 {
 public:
-	~IGrayscale() override = default;
+    ~IGrayscale() override = default;
 };
 
 }

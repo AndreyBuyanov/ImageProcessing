@@ -6,42 +6,39 @@
 namespace ImageLib::Filters
 {
 
-using ImageLib::IRunnable;
-using ImageLib::IThread;
-
 class Convolution3x3 :
-	public IConvolution3x3,
-	public IRunnable
+    public IConvolution3x3,
+    public IRunnable
 {
 public:
-	Convolution3x3();
-	~Convolution3x3() override = default;
+    Convolution3x3();
+    ~Convolution3x3() override = default;
 
-	// IConvolution
-	void ProcessBitmap() override;
+    // IConvolution
+    void ProcessBitmap() override;
 
-	void SetBitmap(
-		IBitmap *bitmap) override;
+    void SetBitmap(
+        IBitmap *bitmap) override;
 
-	void RegisterProgressEventHandler(
-		IProgressEventHandler *handler) override;
-	void RegisterFilterControlEventHandler(
-		IFilterControlEventHandler *handler) override;
+    void RegisterProgressEventHandler(
+        IProgressEventHandler *handler) override;
+    void RegisterFilterControlEventHandler(
+        IFilterControlEventHandler *handler) override;
 
     [[nodiscard]] std::string GetName() const override;
 
-	void SetKernel(
-		const Kernel3x3 &kernel) override;
+    void SetKernel(
+        const Kernel3x3 &kernel) override;
 
-	// IRunnable
-	void Run() override;
+    // IRunnable
+    void Run() override;
 
 private:
-	IBitmap *m_Bitmap;
-	IProgressEventHandler *m_ProgressEventHandler;
-	IFilterControlEventHandler *m_FilterControlEventHandler;
-	IThread *m_Thread;
-	Kernel3x3 m_Kernel;
+    IBitmap *m_Bitmap;
+    IProgressEventHandler *m_ProgressEventHandler;
+    IFilterControlEventHandler *m_FilterControlEventHandler;
+    IThread *m_Thread;
+    Kernel3x3 m_Kernel;
 };
 
 }

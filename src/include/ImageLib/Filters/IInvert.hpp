@@ -6,10 +6,10 @@ namespace ImageLib::Filters
 {
 
 class IInvert :
-	public IFilter
+    public IFilter
 {
 public:
-	~IInvert() override = default;
+    ~IInvert() override = default;
 };
 
 }

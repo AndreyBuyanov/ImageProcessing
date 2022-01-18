@@ -6,43 +6,40 @@
 namespace ImageLib::Filters
 {
 
-using ImageLib::IRunnable;
-using ImageLib::IThread;
-
 class Gamma :
-	public IGamma,
-	public IRunnable
+    public IGamma,
+    public IRunnable
 {
 public:
-	Gamma();
-	~Gamma() override = default;
+    Gamma();
+    ~Gamma() override = default;
 
-	// IFilter
-	void ProcessBitmap() override;
+    // IFilter
+    void ProcessBitmap() override;
 
-	void SetBitmap(
-		IBitmap *bitmap) override;
+    void SetBitmap(
+        IBitmap *bitmap) override;
 
-	void RegisterProgressEventHandler(
-		IProgressEventHandler *handler) override;
-	void RegisterFilterControlEventHandler(
-		IFilterControlEventHandler *handler) override;
+    void RegisterProgressEventHandler(
+        IProgressEventHandler *handler) override;
+    void RegisterFilterControlEventHandler(
+        IFilterControlEventHandler *handler) override;
 
     [[nodiscard]] std::string GetName() const override;
 
-	// IGamma
-	void SetGamma(
-		float gamma) override;
+    // IGamma
+    void SetGamma(
+        float gamma) override;
 
-	// IRunnable
-	void Run() override;
+    // IRunnable
+    void Run() override;
 
 private:
-	IBitmap *m_Bitmap;
-	IProgressEventHandler *m_ProgressEventHandler;
-	IFilterControlEventHandler *m_FilterControlEventHandler;
-	IThread *m_Thread;
-	float m_Gamma;
+    IBitmap *m_Bitmap;
+    IProgressEventHandler *m_ProgressEventHandler;
+    IFilterControlEventHandler *m_FilterControlEventHandler;
+    IThread *m_Thread;
+    float m_Gamma;
 };
 
 }
